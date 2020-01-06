@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: f1c19a6a1a1d18682de5d358d3d8dea9e075cfff
+  branch: master
+  specs:
+    faker (2.10.0)
+      i18n (>= 1.6, < 1.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -232,6 +240,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   devise
+  faker!
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   omniauth-facebook

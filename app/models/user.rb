@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
          :omniauthable, omniauth_providers: [:github, :facebook]
+
+  has_many :appointments, dependent: :destroy
+  has_many :physicians, through: :appointments, source: 'doctor'
   
   # Facebook Omniauth
   def self.new_with_session(params, session)
