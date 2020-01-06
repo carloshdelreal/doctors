@@ -46,7 +46,7 @@ Once you have installed the requiered packages shown on the [Required Installati
 Clone the Repository, the folder toy_app will be downloaded
 
 ```Shell
-your@pc:~$ git clone https://github.com/carloshdelreal/capstone.git
+your@pc:~$ git clone https://github.com/carloshdelreal/doctors.git
 ```
 
 Move to the downloaded folder
