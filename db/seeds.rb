@@ -34,7 +34,7 @@ specializations.each do |specialty|
 end
 
 cities = ['bogota', 'medellin', 'cali', 'los angeles', 'san francisco', 'miami', 'newyork', 'dallas', 'houston', 'knoxville', 'albuquerque']
-s =Specialization.all
+s = Specialization.all
 
 50.times do
   name = Faker::Name.unique.first_name
@@ -42,6 +42,52 @@ s =Specialization.all
   Doctor.create!( docname: name+lastname,
                   location: cities.sample,
                   fullname: name + " " +lastname,
-                  specialization_id: s.sample.id
-                )
+                  specialization_id: s.sample.id )
+end
+
+doctors = Doctor.all
+users = User.all
+confirmed_array = [true, false]
+doctors.each do |doctor|
+  u = users.sample
+  d = Date.today + 1.day
+  t = Time.new(d.year, d.month, d.day, 8)
+  doctor.appointments.create!(
+    user_id: u.id,
+    date: d,
+    time: t,
+    duration: 1,
+    confirmed: confirmed_array.sample,
+  )
+
+  u = users.sample
+  t = Time.new(d.year, d.month, d.day, 9)
+  doctor.appointments.create!(
+    user_id: u.id,
+    date: d,
+    time: t,
+    duration: 1,
+    confirmed: confirmed_array.sample,
+  )
+
+  u = users.sample
+  t = Time.new(d.year, d.month, d.day, 11)
+  doctor.appointments.create!(
+    user_id: u.id,
+    date: d,
+    time: t,
+    duration: 1,
+    confirmed: confirmed_array.sample,
+  )
+
+  u = users.sample
+  d = Date.today + 1.day
+  t = Time.new(d.year, d.month, d.day, 12)
+  doctor.appointments.create!(
+    user_id: u.id,
+    date: d,
+    time: t,
+    duration: 1,
+    confirmed: confirmed_array.sample,
+  )
 end
