@@ -15,15 +15,5 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from '../components/App'
 import '../stylesheets/main'
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <App />,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+import 'bootstrap'
