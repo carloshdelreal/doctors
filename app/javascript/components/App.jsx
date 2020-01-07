@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import Navbar from './Navbar'
+import React from 'react';
+import DoctorList from '../containers/doctorList';
+import SpecialtiesList from '../containers/specialtiesList';
 
-class App extends Component {
-  render() {
-    return (
-      <Navbar />
-    );
-  }
-}
+const App = () => (
+  <div>
+    <SpecialtiesList />
+    <DoctorList />
+  </div>
+);
 
 export default App;
