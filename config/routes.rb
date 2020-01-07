@@ -17,4 +17,12 @@ Rails.application.routes.draw do
 
   root to: 'application#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :api do
+    namespace :v1 do
+      resources :doctor, only: [:show, :index]
+      resources :specialization, only: [:show, :index]
+      resources :appointment, only: [:new, :index, :show, :create, :edit, :destroy, :update ]
+    end
+  end
 end
