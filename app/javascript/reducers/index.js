@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import specialtyReducer from './filter';
+import specialtyReducer from './specialty';
 import doctorsReducer from './doctor';
+import specialtySelectReducer from './selectSpecialty';
 
 const generalReducer = combineReducers({
   doctors: doctorsReducer,
-  specialty: specialtyReducer,
+  specialties: specialtyReducer,
+  specialtySelected: specialtySelectReducer,
 });
 
 export default generalReducer;

@@ -2,21 +2,16 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Doctor from '../components/doctor';
-import specialtyFilter from '../actions/index'
+import specialtyFilter from '../actions/index';
 
 class DoctorList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const { doctors, specialty } = this.props;
-    console.log(this.props);
+    const { doctors, specialtyFilter } = this.props;
     let specialtydoctors;
-    if (specialty === null) {
+    if (specialtyFilter === null) {
       specialtydoctors = doctors;
     } else {
-      specialtydoctors = doctors.filter(doctor => doctor.specialization_id === specialty);
+      specialtydoctors = doctors.filter(doctor => doctor.specialization_id === specialtyFilter);
     }
     return (
       specialtydoctors.map(doctor => (
@@ -32,15 +27,15 @@ class DoctorList extends Component {
 
 const mapStateToProps = state => ({
   doctors: state.doctors,
-  specialty: state.specialty,
+  specialty: state.specialty.id,
 });
 
 const mapDispatchToProps = dispatch => ({
-  specialtyFilter: specialty => dispatch(specialtyFilter(specialty)),
+  specialtyFilter: specialtyFilter => dispatch(specialtyFilter(specialtyFilter)),
 });
 
 DoctorList.defaultProps = {
-  specialty: null,
+  specialtyFilter: null,
 };
 
 DoctorList.propTypes = {
@@ -53,7 +48,7 @@ DoctorList.propTypes = {
       specialization_id: PropTypes.number,
     }).isRequired,
   ).isRequired,
-  specialty: PropTypes.number,
+  specialtyFilter: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorList);

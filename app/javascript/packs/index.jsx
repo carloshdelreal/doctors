@@ -36,6 +36,17 @@ const initialState = {
       specialization_id: 5,
     },
   ],
+
+  specialties: [
+    { id: 1, area: 'general' },
+    { id: 2, area: 'pediatrics' },
+    { id: 3, area: 'dermatology' },
+    { id: 4, area: 'oncology' },
+    { id: 5, area: 'internal medicine' },
+    { id: 6, area: 'neurology' },
+    { id: 7, area: 'obstetrics' },
+    { id: 8, area: 'cardiology' },
+  ],
 };
 
 const store = createStore(generalReducer, initialState);
