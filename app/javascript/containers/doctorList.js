@@ -1,10 +1,21 @@
+import axios from 'axios';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Doctor from '../components/doctor';
+import { loadDoctors } from '../actions/index';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DoctorList extends Component {
+  componentDidMount() {
+    const { loadDoctors } = this.props;
+    axios.get('/api/v1/doctor')
+      .then(doctors => {
+        debugger
+        loadDoctors(doctors.data);
+      });
+  }
+
   render() {
     const { doctors, specialtySelected } = this.props;
     let specialtydoctors;
@@ -36,7 +47,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  loadDoctors: doctors => dispatch(loadDoctors(doctors)),
 });
 
 DoctorList.defaultProps = {

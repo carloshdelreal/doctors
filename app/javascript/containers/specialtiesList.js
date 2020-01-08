@@ -7,7 +7,7 @@ import { specialtyFilter, toggleOffSpecialty } from '../actions/index';
 function LogoutButton(props) {
   const { onClick } = props;
   return (
-    <div className="col-6 p-0 d-flex justify-content-center">
+    <div className="col-6 col-xs-6 col-sm-4 p-0 d-flex justify-content-center">
       <button className="btn btn-warning btn-lg btn-block m-1" type="button" onClick={onClick}>
         unselect
       </button>
