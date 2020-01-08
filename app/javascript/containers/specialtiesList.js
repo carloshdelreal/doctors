@@ -45,7 +45,7 @@ class SpecialtiesList extends Component {
       <div className="px-3">
         { specialtySelected ? (null) : (<h3>Select Specialty</h3>) }
         <div className="row">
-          {selectedSpecialties.map((specialty) => (
+          {selectedSpecialties.map(specialty => (
             <Specialty
               key={specialty.id}
               specialty={specialty}

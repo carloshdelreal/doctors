@@ -10,8 +10,7 @@ class DoctorList extends Component {
   componentDidMount() {
     const { loadDoctors } = this.props;
     axios.get('/api/v1/doctor')
-      .then(doctors => {
-        debugger
+      .then((doctors) => {
         loadDoctors(doctors.data);
       });
   }
@@ -65,6 +64,7 @@ DoctorList.propTypes = {
     }).isRequired,
   ).isRequired,
   specialtySelected: PropTypes.number,
+  loadDoctors: PropTypes.instanceOf(Function).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorList);

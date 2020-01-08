@@ -7,7 +7,7 @@ const specialtyFilter = specialty => ({
   payload: specialty,
 });
 
-const toggleOffSpecialty = () =>({
+const toggleOffSpecialty = () => ({
   type: TOGGLE_OFF_SPECIALTY,
 });
 
