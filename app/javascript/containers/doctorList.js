@@ -2,24 +2,29 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Doctor from '../components/doctor';
-import specialtyFilter from '../actions/index';
 
+// eslint-disable-next-line react/prefer-stateless-function
 class DoctorList extends Component {
   render() {
-    const { doctors, specialtyFilter } = this.props;
+    const { doctors, specialtySelected } = this.props;
     let specialtydoctors;
-    if (specialtyFilter === null) {
+    if (specialtySelected === null) {
       specialtydoctors = doctors;
     } else {
-      specialtydoctors = doctors.filter(doctor => doctor.specialization_id === specialtyFilter);
+      specialtydoctors = doctors.filter(doctor => doctor.specialization_id === specialtySelected);
     }
     return (
-      specialtydoctors.map(doctor => (
-        <Doctor
-          key={doctor.id}
-          doctor={doctor}
-        />
-      ))
+      <div className="px-3">
+        <h3>Doctors</h3>
+        <div className="row">
+          {specialtydoctors.map(doctor => (
+            <Doctor
+              key={doctor.id}
+              doctor={doctor}
+            />
+          ))}
+        </div>
+      </div>
     );
   }
 }
@@ -27,15 +32,15 @@ class DoctorList extends Component {
 
 const mapStateToProps = state => ({
   doctors: state.doctors,
-  specialty: state.specialty.id,
+  specialtySelected: state.specialtySelected,
 });
 
 const mapDispatchToProps = dispatch => ({
-  specialtyFilter: specialtyFilter => dispatch(specialtyFilter(specialtyFilter)),
+
 });
 
 DoctorList.defaultProps = {
-  specialtyFilter: null,
+  specialtySelected: null,
 };
 
 DoctorList.propTypes = {
@@ -48,7 +53,7 @@ DoctorList.propTypes = {
       specialization_id: PropTypes.number,
     }).isRequired,
   ).isRequired,
-  specialtyFilter: PropTypes.number,
+  specialtySelected: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorList);

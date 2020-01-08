@@ -5,7 +5,7 @@ import SpecialtiesList from '../containers/specialtiesList';
 const App = () => (
   <div>
     <SpecialtiesList />
-    {/* <DoctorList /> */}
+    <DoctorList />
   </div>
 );
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Doctor = ({ doctor }) => (
-  <div className="col-6">
+  <div className="col-xs-12 col-sm-6 p-0 d-flex justify-content-center">
     {doctor.fullname}
   </div>
 );

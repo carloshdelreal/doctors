@@ -43,7 +43,7 @@ class SpecialtiesList extends Component {
 
     return (
       <div className="px-3">
-        <h3>Select Specialty</h3>
+        { specialtySelected ? (null) : (<h3>Select Specialty</h3>) }
         <div className="row">
           {selectedSpecialties.map((specialty) => (
             <Specialty
