@@ -1,0 +1,57 @@
+body{
+  font-family: $font-montserrat;
+}
+
+.doctor{
+  font-size: smaller;
+  p{
+    line-height: 0.9;
+  }
+  &__title{
+    padding-bottom: 0px;
+    font-size: medium;
+  }
+  &__specialty{
+    color: grey;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  &__docname{
+    color: lightgrey;
+  }
+  &__location{
+    text-transform: capitalize;
+    color: lightgrey;
+  }
+  &__price_exp_likes{
+    font-size: smaller;
+    font-weight: 600;
+    &--likes{
+      p{
+        position: relative;
+        span{
+          position: absolute;
+          top: -5px;
+          right: 22px;
+          color: red;
+          font-size: large;
+        }
+      }
+    }
+  }
+  &__btn-call{
+    color: $green-text;
+    border: 1px solid $green-text;
+  }
+  &__btn-book{
+    color: white;
+    background: linear-gradient(90deg, $green-text 0%, $dark-background 100%);
+    border:$light-background;
+  }
+  &__view_profile{
+    color: $green-text;
+    text-transform: uppercase;
+    font-size: smaller;
+    font-weight: 600;
+  }
+}

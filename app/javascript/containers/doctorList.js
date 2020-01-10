@@ -16,7 +16,7 @@ class DoctorList extends Component {
   }
 
   render() {
-    const { doctors, specialtySelected } = this.props;
+    const { doctors, specialties, specialtySelected } = this.props;
     let specialtydoctors;
     if (specialtySelected === null) {
       specialtydoctors = doctors;
@@ -26,11 +26,12 @@ class DoctorList extends Component {
     return (
       <div className="px-3">
         <h3>Doctors</h3>
-        <div className="row">
+        <div className="row p-1">
           {specialtydoctors.map(doctor => (
             <Doctor
               key={doctor.id}
               doctor={doctor}
+              specialty={specialties[doctor.specialization_id - 1]}
             />
           ))}
         </div>
@@ -43,6 +44,7 @@ class DoctorList extends Component {
 const mapStateToProps = state => ({
   doctors: state.doctors,
   specialtySelected: state.specialtySelected,
+  specialties: state.specialties,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -65,6 +67,12 @@ DoctorList.propTypes = {
   ).isRequired,
   specialtySelected: PropTypes.number,
   loadDoctors: PropTypes.instanceOf(Function).isRequired,
+  specialties: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      area: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorList);
