@@ -11,10 +11,23 @@ body{
     width: 75%;
     border: 1px solid $gray-lines;
   }
+  &--sharedLinks{
+    padding: 2rem 0px;
+    a{
+      display: block;
+      margin: auto;
+      background: linear-gradient(90deg, gray 0%, $gray-text 100%);
+      border:$light-background;
+      border-radius: 16px;
+      color: white;
+      width: 75%;
+    }
+  }
 }
 
 .actions{
   input{
+    color: white;
     margin-top: 2rem;
     background: linear-gradient(90deg, $green-text 0%, $dark-background 100%);
     border:$light-background;
