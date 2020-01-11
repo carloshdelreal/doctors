@@ -1,9 +1,10 @@
+import '../stylesheets/main.scss';
+import 'bootstrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import generalReducer from '../reducers/index';
 import Display from '../components/Display';
-import '../stylesheets/main.scss';
 
 const initialState = {
   doctors: [
