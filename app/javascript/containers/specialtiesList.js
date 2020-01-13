@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Specialty from '../components/specialty';
 import { specialtyFilter, toggleOffSpecialty } from '../actions/index';
+import stetoscope from '../images/stetoscope.jpg';
 
 function LogoutButton(props) {
   const { onClick } = props;
@@ -44,8 +45,18 @@ class SpecialtiesList extends Component {
 
     return (
       <div className="px-3">
-        { specialtySelected ? (null) : (<h3>Select Specialty</h3>) }
         <div className="row">
+          <div className="specialtiesList__instructions col-12 text-center">
+            <img src={stetoscope} alt="stetos logo" />
+            <h3>
+              Search Doctor
+            </h3>
+            <p>
+              search by directly typing the doctors name, specialty,
+              symtoms, clinics, hospital, etc. You can also search by
+              health concerns listed below
+            </p>
+          </div>
           {selectedSpecialties.map(specialty => (
             <Specialty
               key={specialty.id}

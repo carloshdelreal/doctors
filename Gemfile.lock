@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: f1c19a6a1a1d18682de5d358d3d8dea9e075cfff
+  revision: 1c761ad14fff7f20341bcff93c34859f9f557cf8
   branch: master
   specs:
     faker (2.10.0)
-      i18n (>= 1.6, < 1.8)
+      i18n (>= 1.6, < 2)
 
 GEM
   remote: https://rubygems.org/
@@ -86,7 +86,7 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (3.6.0)
-    i18n (1.7.0)
+    i18n (1.8.1)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     jbuilder (2.9.1)
@@ -107,7 +107,7 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.13.0)
+    minitest (5.14.0)
     msgpack (1.3.1)
     multi_json (1.14.1)
     multi_xml (0.6.0)
@@ -134,12 +134,12 @@ GEM
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
     parallel (1.19.1)
-    parser (2.7.0.1)
+    parser (2.7.0.2)
       ast (~> 2.4.0)
-    pg (1.2.1)
+    pg (1.2.2)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.0.8)
+    rack (2.1.1)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -178,10 +178,10 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rubocop (0.78.0)
+    rubocop (0.79.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.6)
+      parser (>= 2.7.0.1)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)

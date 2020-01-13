@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'application#home', as: :authenticated_root
+      root 'homepage#home', as: :authenticated_root
     end
 
     unauthenticated do
@@ -11,11 +11,11 @@ Rails.application.routes.draw do
     end
     get 'sign_in', to: 'users/sessions#new'
     get 'sign_up', to: 'users/registrations#new'
+    get 'sign_out', to: 'users/sessions#destroy'
     get 'forgot_password', to: 'users/passwords#new'
     get 'reset_password', to: 'users/passwords#edit'
   end
 
-  root to: 'application#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :api do

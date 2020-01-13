@@ -2,6 +2,12 @@ body{
   font-family: $font-montserrat;
 }
 
+.notice,
+.alert{
+  position: fixed;
+  color: $red-heart;
+}
+
 .doctor{
   font-size: smaller;
   p{
@@ -55,6 +61,44 @@ body{
     font-weight: 600;
   }
 }
-nav{
+.specialty{
+  &__button{
+    background-color: $light-background;
+    color: $green-text;
+    font-size: smaller;
+    font-weight: 600;
+    padding: 1rem 0px;
+  }
+}
+.specialtiesList{
+  &__instructions{
+    font-size: smaller;
+  }
+}
+.nav-component{
+  margin-top: -1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
   background-color:$light-background;
+  &__button{
+    color: $green-text;
+    background: none;
+    border: none;
+  }
+}
+
+.item{
+  flex: 1;
+}
+
+.profile{
+  &__logout,
+  &__email{
+    margin: 1rem auto;
+
+    p{
+      margin-bottom: 0;
+    }
+  }
+
 }

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Specialty = ({ specialty, selectSpecialty }) => (
-  <div className="col-6 col-xs-6 col-sm-4 p-0 d-flex justify-content-center">
-    <button className="btn btn-primary btn-lg btn-block m-1" type="button" onClick={selectSpecialty}>
+  <div className="col-6 col-xs-6 col-sm-4 p-2 d-flex justify-content-center">
+    <button className="specialty__button btn btn-lg btn-block shadow-sm" type="button" onClick={selectSpecialty}>
       {specialty.area}
     </button>
   </div>

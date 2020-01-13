@@ -13,7 +13,7 @@ const DeviseLogin = () => (
         Welcome
       </h3>
       <p>
-        Sign in to Continue
+        Log in to Continue
       </p>
     </div>
   </div>
