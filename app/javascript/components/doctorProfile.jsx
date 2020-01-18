@@ -83,14 +83,24 @@ const Feedback = () => (
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DoctorProfile extends React.Component {
+  constructor() {
+    super();
+    this.searchAgain = this.searchAgain.bind(this);
+  }
+
+  searchAgain() {
+    const { toggleOffSpecialty } = this.props;
+    toggleOffSpecialty();
+  }
+
   render() {
-    const { searchAgain, match } = this.props;
+    const { match } = this.props;
     return (
       <div>
         <div className="doctorProfile container">
           <div className="doctorProfile__nav row justify-content-between">
             <div className="col-6 text-left">
-              <Link to="/doctor" onClick={() => searchAgain}>
+              <Link to="/doctor" onClick={() => this.searchAgain}>
                 <img src={BackCaretWhite} alt="back caret" />
               </Link>
             </div>
@@ -201,6 +211,7 @@ DoctorProfile.propTypes = {
       id: PropTypes.string,
     }),
   }).isRequired,
+  toggleOffSpecialty: PropTypes.instanceOf(Function).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorProfile);
