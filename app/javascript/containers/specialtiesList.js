@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Specialty from '../components/specialty';
 import { specialtyFilter, toggleOffSpecialty } from '../actions/index';
-import stetoscope from '../images/stetoscope.jpg';
+import stetoscope from '../images/stetoscope.png';
 
 function LogoutButton(props) {
   const { onClick } = props;

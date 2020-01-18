@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import userImage from '../images/user.png';
+import { Link } from 'react-router-dom';
 
 const Doctor = ({ doctor, specialty }) => (
   <div className="doctor col-xs-12 col-sm-6 px-4 py-4 d-flex justify-content-center">
@@ -47,7 +48,9 @@ const Doctor = ({ doctor, specialty }) => (
       <div className="row justify-content-center">
         <div className="col-12 text-center p-2">
           <div className="doctor__view_profile">
-            View Profile
+            <Link to={`/doctor/${doctor.id}`}>
+              View Profile
+            </Link>
           </div>
         </div>
         <div className="col-6 col-sm-6 col-md-6 col-lg-4 text-right">

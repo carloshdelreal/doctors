@@ -1,0 +1,32 @@
+.react-calendar{
+  margin: auto;
+}
+.react-calendar .react-calendar{
+  &__month-view__days__day{
+    
+    &:disabled{
+      background-color: rgba($color: #f0f0f0, $alpha: 0.2);
+    }
+  }
+  &__month-view__days__day--weekend{
+    color: rgba($color: #f0f0f0, $alpha: 0.7);
+    &:disabled{
+      background-color: rgba($color: #f0f0f0, $alpha: 0.2);
+    }
+  }
+  &__month-view__weekdays{
+    color: white;
+  }
+}
+
+.bookAppointment__header>.react-calendar{
+  background: none;
+  border: none;
+
+  button:disabled{
+    background-color: rgba($color: #f0f0f0, $alpha: 0.2)
+  }
+  button:not(:disabled){
+    color: white;
+  }
+}

@@ -2,17 +2,8 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { toggleOffSpecialty } from '../actions/index';
-
-function backButton(props) {
-  const { onClick } = props;
-  return (
-    <div className="col-6 col-xs-6 col-sm-4 p-0 d-flex justify-content-center">
-      <button className="btn btn-warning btn-lg btn-block m-1" type="button" onClick={onClick}>
-        unselect
-      </button>
-    </div>
-  );
-}
+import backCaret from '../images/backCaret.png';
+import { Link } from 'react-router-dom';
 
 class NavComponent extends Component {
   constructor(props) {
@@ -37,14 +28,14 @@ class NavComponent extends Component {
     }
 
     return (
-      <div className="nav-component d-flex p-2 justify-content-space-between">
+      <div className="nav-component d-flex justify-content-space-between">
         <div className="item d-flex text-left">
-          <button className="nav-component__button" type="button" onClick={this.unselectSpecialty}>&#60;</button>
+          <button className="nav-component__button" type="button">
+            <Link to="/" onClick={this.unselectSpecialty}>
+              <img src={backCaret} alt="backcaret" />
+            </Link>
+          </button>
           <button className="nav-component__button" type="button" onClick={this.unselectSpecialty}>{ buttonText }</button>
-        </div>
-
-        <div className="item text-right">
-          <a className="btn btn-danger" rel="nofollow" data-method="delete" href="/users/sign_out">Sign out</a>
         </div>
       </div>
     );
