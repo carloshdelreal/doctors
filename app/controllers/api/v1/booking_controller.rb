@@ -5,8 +5,13 @@ class Api::V1::BookingController < ApplicationController
   before_action :booking_params, only: %i[create]
 
   def index
-    render json: { success: true,
-                   booking: @bookings.as_json(only: %i[label hour minutes atend_id id])}
+    if params[:doctor_id]
+      render json: { success: true,
+        booking: @bookings.as_json(only: %i[label hour minutes atend_id id])}
+    else
+      render json: { success: true,
+        booking: @bookings.as_json}
+    end
   end
 
   def update
@@ -20,10 +25,20 @@ class Api::V1::BookingController < ApplicationController
     end
   end
 
+  def show
+    booking = Booking.where(user_id: current_user.id)
+    render json: {success: true,
+                  booking: booking.as_json}
+  end
+
   private
 
   def set_bookings
-    @bookings = Booking.where(doctor_id: params[:doctor_id], booked: false)
+    if params[:doctor_id]
+      @bookings = Booking.where(doctor_id: params[:doctor_id], booked: false)
+    else
+      @bookings = Booking.where(user_id: current_user.id)
+    end
   end
 
   def booking_params
