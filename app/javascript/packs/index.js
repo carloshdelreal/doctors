@@ -61,6 +61,6 @@ const store = createStore(generalReducer, initialState);
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Display store={store} />,
-    document.querySelector('#r-container'),
+    document.querySelector('#root'),
   );
 });

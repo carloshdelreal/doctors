@@ -15,12 +15,7 @@ class BookAppointment extends Component {
 
     this.state = {
       date,
-      booking: {
-        '1/19/2020': [['8:00 AM', 8, 0], ['8:30 AM', 8, 30], ['9:00 AM', 9, 0], ['9:30 AM', 9, 30], ['10:00 AM', 10, 0]],
-        '1/20/2020': [['8:30 AM', 8, 30], ['9:00 AM', 9, 0], ['9:30 AM', 9, 30], ['10:00 AM', 10, 0]],
-        '1/21/2020': [['8:00 AM', 8, 0], ['10:00 AM', 10, 0]],
-        '1/22/2020': [['8:00 AM', 8, 0], ['9:30 AM', 9, 30], ['10:00 AM', 10, 0]],
-      },
+      booking: null,
       selected: 0,
     };
     this.calendarChange = this.calendarChange.bind(this);
@@ -28,13 +23,36 @@ class BookAppointment extends Component {
     this.newTime = this.newTime.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { id } = this.props.match.params;
-    axios.get(`/api/v1/book/${id}`)
-      .then((bookingData) => {
-        const booking = bookingData.data;
-        this.setState({ booking });
-      });
+    const res = await axios.get(`/api/v1/doctor/${id}/booking`)
+    const resAtend = await axios.get(`/api/v1/atend`)
+    
+    const dictAtend = {}
+    resAtend.data.atends.forEach((item) => {
+      if (dictAtend[item.id] == null){
+        const year = item.date.slice(0,4)
+        const month = parseInt(item.date.slice(5,7)) - 1
+        const day = item.date.slice(8)
+        const d = new Date(year,month,day)
+        dictAtend[item.id] = d.toLocaleDateString('en-US')
+      }
+    })
+      
+
+    const dict = {}
+    res.data.booking.forEach((item) => {
+      if (dictAtend[item.atend_id] != null){
+        if (dict[dictAtend[item.atend_id]] == null){
+          dict[dictAtend[item.atend_id]] = [[item.label, item.hour, item. minutes]]
+        } else {
+          dict[dictAtend[item.atend_id]].push([item.label, item.hour, item. minutes])
+        }
+      }
+    })
+
+    this.setState({ booking: dict })
+
   }
 
   calendarChange(date) {
@@ -63,6 +81,10 @@ class BookAppointment extends Component {
       booking,
       selected,
     } = this.state;
+    
+    if (booking === null){
+      return (<div>Loading</div>);
+    }
     const month = date.toLocaleString('default', { month: 'long' });
     const timeList = booking[date.toLocaleDateString('en-US')];
     const minBookinDate = new Date();

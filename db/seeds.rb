@@ -131,26 +131,31 @@ def createMorningBookings(d, a)
   Booking.create(doctor: d, atend: a, label: "12:00 AM", hour: 12, minutes: 00, booked: false )
 end
 
-d = Doctor.first
-a = Atend.first
-createBookings(d, a)
+a1 = Atend.first
+a2 = Atend.second
+a3 = Atend.third
+a4 = Atend.all[4]
+a5 = Atend.all[5]
+a6 = Atend.all[6]
 
-d = Doctor.first
-a = Atend.second
-createBookings(d, a)
+Doctor.all.each do | d |
+  createBookings(d, a1)
+end
 
-d = Doctor.first
-a = Atend.third
-createBookings(d, a)
 
-d = Doctor.first
-a = Atend.all[4]
-createMorningBookings(d, a)
+Doctor.all.shuffle[0..35].each do | d |
+  createBookings(d, a2)
+  createBookings(d, a3)
+end
 
-d = Doctor.first
-a = Atend.all[5]
-createMorningBookings(d, a)
+Doctor.all.shuffle[0..35].each do | d |
+  createMorningBookings(d, a4)
+  createMorningBookings(d, a5)
+end
 
-d = Doctor.first
-a = Atend.all[6]
-createMorningBookings(d, a)
+Doctor.all.shuffle[0..35].each do | d |
+  createMorningBookings(d, a6)
+end
+
+
+  

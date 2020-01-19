@@ -5,7 +5,7 @@ class Api::V1::AtendController < ApplicationController
 
   def index
     render json: { success: true,
-                   atends: @atends.as_json(only: %i[date]) }
+                   atends: @atends.as_json(only: %i[id date]) }
   end
 
   private
