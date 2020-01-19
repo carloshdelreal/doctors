@@ -11,6 +11,7 @@ class Api::V1::BookingController < ApplicationController
 
   def update
     booking = Booking.find(params[:id])
+    booking.user_id = current_user.id
     booking.booked = true
     if booking.save
       render json: { success: true }
