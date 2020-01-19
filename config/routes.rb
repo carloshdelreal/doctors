@@ -20,10 +20,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :user, only: [:show] do
+        resources :booking, only: [:show]
+      end
       resources :specialization, only: [:show, :index]
       resources :atend, only: [:index]
       resources :doctor, only: [:show, :index] do
-        resources :appointment, only: [:index, :show, :create, :edit, :destroy, :update ]
+        resources :appointment, only: [:index, :show]
         resources :booking, only: [:index, :update]
       end
     end
