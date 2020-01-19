@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       resources :atend, only: [:index]
       resources :doctor, only: [:show, :index] do
         resources :appointment, only: [:index, :show, :create, :edit, :destroy, :update ]
-        resources :booking, only: [:index, :create]
+        resources :booking, only: [:index, :update]
       end
     end
   end

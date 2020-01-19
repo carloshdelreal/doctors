@@ -14,7 +14,7 @@ class CarrouselSelector extends React.Component {
     const time = new Date();
     time.setHours(arr[1]);
     time.setMinutes(arr[2]);
-    newTime({ time, index });
+    newTime({ time, index, atend_id: arr[3] });
   }
 
   render() {

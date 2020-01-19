@@ -44,9 +44,9 @@ class BookAppointment extends Component {
     res.data.booking.forEach((item) => {
       if (dictAtend[item.atend_id] != null){
         if (dict[dictAtend[item.atend_id]] == null){
-          dict[dictAtend[item.atend_id]] = [[item.label, item.hour, item. minutes]]
+          dict[dictAtend[item.atend_id]] = [[item.label, item.hour, item. minutes, item.id]]
         } else {
-          dict[dictAtend[item.atend_id]].push([item.label, item.hour, item. minutes])
+          dict[dictAtend[item.atend_id]].push([item.label, item.hour, item. minutes, item.id])
         }
       }
     })
@@ -60,18 +60,15 @@ class BookAppointment extends Component {
   }
 
   newTime(time) {
-    this.setState({ time: time.time, selected: time.index });
+    this.setState({ time: time.time, selected: time.index, atend_id: time.atend_id });
   }
 
   bookAppointment = async e => {
-    console.log('works');
     const { id } = this.props.match.params;
-    const { time } = this.state;
-    const res = await axios.post(`/api/v1/doctor/${id}/appointment`, {
-      id,
-      time,
+    const { atend_id } = this.state;
+    const res = await axios.patch(`/api/v1/doctor/${id}/booking/${atend_id}`, {
+      booking: {booking: true}
     });
-    console.log(res);
   }
 
   render() {
