@@ -28,13 +28,14 @@ class BookAppointment extends Component {
     this.newTime = this.newTime.bind(this);
   }
 
-  // componentDidMount() {
-  //   axios.get('/api/v1/book/:id')
-  //     .then((bookingData) => {
-  //       const booking = bookingData.data;
-  //       this.setState({ booking });
-  //     });
-  // }
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    axios.get(`/api/v1/book/${id}`)
+      .then((bookingData) => {
+        const booking = bookingData.data;
+        this.setState({ booking });
+      });
+  }
 
   calendarChange(date) {
     this.setState({ date, selected: 0, time: null });
@@ -45,9 +46,10 @@ class BookAppointment extends Component {
   }
 
   bookAppointment = async e => {
-    const { id } = this.match.params;
+    console.log('works');
+    const { id } = this.props.match.params;
     const { time } = this.state;
-    const res = await axios.post('/api/vi/book/', {
+    const res = await axios.post(`/api/v1/doctor/${id}/appointment`, {
       id,
       time,
     });
@@ -103,6 +105,7 @@ class BookAppointment extends Component {
                     disabled={!time}
                     className="btn btn-block doctorProfile__bookButton"
                     type="button"
+                    onClick={this.bookAppointment}
                   >
                     Book
                   </button>

@@ -91,3 +91,66 @@ doctors.each do |doctor|
     confirmed: confirmed_array.sample,
   )
 end
+
+Atend.create(date: Time.now() + 1.day)
+Atend.create(date: Time.now() + 2.day)
+Atend.create(date: Time.now() + 3.day)
+Atend.create(date: Time.now() + 4.day)
+Atend.create(date: Time.now() + 5.day)
+Atend.create(date: Time.now() + 6.day)
+Atend.create(date: Time.now() + 7.day)
+Atend.create(date: Time.now() + 8.day)
+
+def createBookings(d, a)
+  Booking.create(doctor: d, atend: a, label: "8:00 AM", hour: 8, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "8:30 AM", hour: 8, minutes: 30, booked: false )
+  Booking.create(doctor: d, atend: a, label: "9:00 AM", hour: 9, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "9:30 AM", hour: 9, minutes: 30, booked: false )
+  Booking.create(doctor: d, atend: a, label: "10:00 AM", hour: 10, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "10:30 AM", hour: 10, minutes: 30, booked: false )
+  Booking.create(doctor: d, atend: a, label: "11:00 AM", hour: 11, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "11:30 AM", hour: 11, minutes: 30, booked: false )
+  Booking.create(doctor: d, atend: a, label: "12:00 AM", hour: 12, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "2:00 PM", hour: 14, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "2:30 PM", hour: 14, minutes: 30, booked: false )
+  Booking.create(doctor: d, atend: a, label: "3:00 PM", hour: 15, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "3:30 PM", hour: 15, minutes: 30, booked: false )
+  Booking.create(doctor: d, atend: a, label: "4:00 PM", hour: 16, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "4:30 PM", hour: 16, minutes: 30, booked: false )
+end
+
+def createMorningBookings(d, a)
+  Booking.create(doctor: d, atend: a, label: "8:00 AM", hour: 8, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "8:30 AM", hour: 8, minutes: 30, booked: false )
+  Booking.create(doctor: d, atend: a, label: "9:00 AM", hour: 9, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "9:30 AM", hour: 9, minutes: 30, booked: false )
+  Booking.create(doctor: d, atend: a, label: "10:00 AM", hour: 10, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "10:30 AM", hour: 10, minutes: 30, booked: false )
+  Booking.create(doctor: d, atend: a, label: "11:00 AM", hour: 11, minutes: 00, booked: false )
+  Booking.create(doctor: d, atend: a, label: "11:30 AM", hour: 11, minutes: 30, booked: false )
+  Booking.create(doctor: d, atend: a, label: "12:00 AM", hour: 12, minutes: 00, booked: false )
+end
+
+d = Doctor.first
+a = Atend.first
+createBookings(d, a)
+
+d = Doctor.first
+a = Atend.second
+createBookings(d, a)
+
+d = Doctor.first
+a = Atend.third
+createBookings(d, a)
+
+d = Doctor.first
+a = Atend.all[4]
+createMorningBookings(d, a)
+
+d = Doctor.first
+a = Atend.all[5]
+createMorningBookings(d, a)
+
+d = Doctor.first
+a = Atend.all[6]
+createMorningBookings(d, a)
