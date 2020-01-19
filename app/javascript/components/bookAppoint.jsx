@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import BackCaretWhite from '../images/backCaretWhite.png';
 import CarrouselSelector from './carrousel';
+import ModalComponent from './modal';
 
 class BookAppointment extends Component {
   constructor(props) {
@@ -17,9 +18,14 @@ class BookAppointment extends Component {
       date,
       booking: null,
       selected: 0,
+      show: false,
     };
+
     this.calendarChange = this.calendarChange.bind(this);
     this.bookAppointment = this.bookAppointment.bind(this);
+    this.handleAccept = this.handleAccept.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.triggerModal = this.triggerModal.bind(this);
     this.newTime = this.newTime.bind(this);
   }
 
@@ -55,6 +61,19 @@ class BookAppointment extends Component {
 
   }
 
+  handleAccept() {
+    this.bookAppointment()
+    this.setState({show: false})
+  }
+
+  handleClose() {
+    this.setState({ show: false});
+  }
+
+  triggerModal() {
+    this.setState({ show: true })
+  }
+
   calendarChange(date) {
     this.setState({ date, selected: 0, time: null });
   }
@@ -77,6 +96,7 @@ class BookAppointment extends Component {
       date,
       booking,
       selected,
+      show,
     } = this.state;
     
     if (booking === null){
@@ -89,6 +109,7 @@ class BookAppointment extends Component {
 
     return (
       <div className="bookAppointment">
+        <ModalComponent show={show} handleClose={this.handleClose} handleAccept={this.handleAccept} />
         <div className="bookAppointment__header container">
           <div className="doctorProfile__nav row">
             <div className="col-2 text-left">
@@ -124,7 +145,7 @@ class BookAppointment extends Component {
                     disabled={!time}
                     className="btn btn-block doctorProfile__bookButton"
                     type="button"
-                    onClick={this.bookAppointment}
+                    onClick={this.triggerModal}
                   >
                     Book
                   </button>
