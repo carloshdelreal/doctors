@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import userImage from '../images/user.png';
 import { Link } from 'react-router-dom';
+import userImage from '../images/user.png';
 
 const Doctor = ({ doctor, specialty }) => (
   <div className="doctor col-xs-12 col-sm-6 px-4 py-4 d-flex justify-content-center">

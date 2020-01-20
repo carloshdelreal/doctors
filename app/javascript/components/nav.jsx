@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { toggleOffSpecialty } from '../actions/index';
 import backCaret from '../images/backCaret.png';
-import { Link } from 'react-router-dom';
 
 class NavComponent extends Component {
   constructor(props) {
@@ -39,10 +39,11 @@ class NavComponent extends Component {
         </div>
       </div>
     );
-
   }
 }
 
+
+// eslint-disable-next-line arrow-parens
 const mapStateToProps = state => ({
   specialtySelected: state.specialtySelected,
   specialty: state.specialty,
@@ -50,6 +51,7 @@ const mapStateToProps = state => ({
 });
 
 
+// eslint-disable-next-line arrow-parens
 const mapDispatchToProps = dispatch => ({
   toggleOffSpecialty: () => dispatch(toggleOffSpecialty()),
 });
@@ -67,6 +69,7 @@ NavComponent.propTypes = {
       area: PropTypes.string,
     }).isRequired,
   ).isRequired,
+  toggleOffSpecialty: PropTypes.instanceOf(Function).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavComponent);

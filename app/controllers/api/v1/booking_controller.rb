@@ -7,10 +7,10 @@ class Api::V1::BookingController < ApplicationController
   def index
     if params[:doctor_id]
       render json: { success: true,
-        booking: @bookings.as_json(only: %i[label hour minutes atend_id id])}
+                     booking: @bookings.as_json(only: %i[label hour minutes atend_id id]) }
     else
       render json: { success: true,
-        booking: @bookings.as_json(only: %i[id label hour minutes doctor_id atend_id])}
+                     booking: @bookings.as_json(only: %i[id label hour minutes doctor_id atend_id]) }
     end
   end
 
@@ -27,18 +27,18 @@ class Api::V1::BookingController < ApplicationController
 
   def show
     booking = Booking.where(user_id: current_user.id)
-    render json: {success: true,
-                  booking: booking.as_json}
+    render json: { success: true,
+                   booking: booking.as_json }
   end
 
   private
 
   def set_bookings
-    if params[:doctor_id]
-      @bookings = Booking.where(doctor_id: params[:doctor_id], booked: false)
-    else
-      @bookings = Booking.where(user_id: current_user.id)
-    end
+    @bookings = if params[:doctor_id]
+                  Booking.where(doctor_id: params[:doctor_id], booked: false)
+                else
+                  Booking.where(user_id: current_user.id)
+                end
   end
 
   def booking_params

@@ -197,9 +197,10 @@ class DoctorProfile extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = () => ({
 });
 
+// eslint-disable-next-line arrow-parens
 const mapDispatchToProps = dispatch => ({
   toggleOffSpecialty: () => dispatch(toggleOffSpecialty()),
 });

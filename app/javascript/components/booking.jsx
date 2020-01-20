@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class BookingComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +37,6 @@ class BookingComponent extends React.Component {
         doctor.fullname, doctor.location, specialDict[doctor.specialization_id]];
     });
 
-    console.log(booking);
     const listBooking = [];
     booking.data.booking.forEach((item) => {
       listBooking.push(
@@ -78,17 +76,17 @@ class BookingComponent extends React.Component {
         ))}
       </div>
     );
-
   }
-
 }
 
+
+// eslint-disable-next-line arrow-parens
 const mapStateToProps = state => ({
   doctors: state.doctors,
   specialties: state.specialties,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = () => ({
 });
 
 BookingComponent.defaultProps = {
