@@ -2,6 +2,7 @@ import axios from 'axios';
 import Calendar from 'react-calendar';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import BackCaretWhite from '../images/backCaretWhite.png';
 import CarrouselSelector from './carrousel';
 import ModalComponent from './modal';
@@ -30,48 +31,44 @@ class BookAppointment extends Component {
   }
 
   async componentDidMount() {
-    const { id } = this.props.match.params;
-    const res = await axios.get(`/api/v1/doctor/${id}/booking`)
-    const resAtend = await axios.get(`/api/v1/atend`)
-    
-    const dictAtend = {}
+    const { match } = this.props;
+    const res = await axios.get(`/api/v1/doctor/${match.params.id}/booking`);
+    const resAtend = await axios.get('/api/v1/atend');
+    const dictAtend = {};
     resAtend.data.atends.forEach((item) => {
-      if (dictAtend[item.id] == null){
-        const year = item.date.slice(0,4)
-        const month = parseInt(item.date.slice(5,7)) - 1
-        const day = item.date.slice(8)
-        const d = new Date(year,month,day)
-        dictAtend[item.id] = d.toLocaleDateString('en-US')
+      if (dictAtend[item.id] == null) {
+        const year = item.date.slice(0, 4);
+        const month = parseInt(item.date.slice(5, 7), 10) - 1;
+        const day = item.date.slice(8);
+        const d = new Date(year, month, day);
+        dictAtend[item.id] = d.toLocaleDateString('en-US');
       }
-    })
-      
+    });
 
-    const dict = {}
+    const dict = {};
     res.data.booking.forEach((item) => {
-      if (dictAtend[item.atend_id] != null){
-        if (dict[dictAtend[item.atend_id]] == null){
-          dict[dictAtend[item.atend_id]] = [[item.label, item.hour, item. minutes, item.id]]
+      if (dictAtend[item.atend_id] != null) {
+        if (dict[dictAtend[item.atend_id]] == null) {
+          dict[dictAtend[item.atend_id]] = [[item.label, item.hour, item.minutes, item.id]];
         } else {
-          dict[dictAtend[item.atend_id]].push([item.label, item.hour, item. minutes, item.id])
+          dict[dictAtend[item.atend_id]].push([item.label, item.hour, item.minutes, item.id]);
         }
       }
-    })
-
-    this.setState({ booking: dict })
-
+    });
+    this.setState({ booking: dict });
   }
 
   handleAccept() {
-    this.bookAppointment()
-    this.setState({show: false})
+    this.bookAppointment();
+    this.setState({ show: false });
   }
 
   handleClose() {
-    this.setState({ show: false});
+    this.setState({ show: false });
   }
 
   triggerModal() {
-    this.setState({ show: true })
+    this.setState({ show: true });
   }
 
   calendarChange(date) {
@@ -82,11 +79,11 @@ class BookAppointment extends Component {
     this.setState({ time: time.time, selected: time.index, atend_id: time.atend_id });
   }
 
-  bookAppointment = async () => {
-    const { id } = this.props.match.params;
-    const { atend_id } = this.state;
-    const res = await axios.patch(`/api/v1/doctor/${id}/booking/${atend_id}`, {
-      booking: {booking: true}
+  async bookAppointment() {
+    const { match } = this.props;
+    const { atend_id: atendId } = this.state;
+    axios.patch(`/api/v1/doctor/${match.params.id}/booking/${atendId}`, {
+      booking: { booking: true },
     });
   }
 
@@ -98,8 +95,8 @@ class BookAppointment extends Component {
       selected,
       show,
     } = this.state;
-    
-    if (booking === null){
+
+    if (booking === null) {
       return (<div>Loading</div>);
     }
     const month = date.toLocaleString('default', { month: 'long' });
@@ -109,7 +106,11 @@ class BookAppointment extends Component {
 
     return (
       <div className="bookAppointment">
-        <ModalComponent show={show} handleClose={this.handleClose} handleAccept={this.handleAccept} />
+        <ModalComponent
+          show={show}
+          handleClose={this.handleClose}
+          handleAccept={this.handleAccept}
+        />
         <div className="bookAppointment__header container">
           <div className="doctorProfile__nav row">
             <div className="col-2 text-left">
@@ -193,5 +194,13 @@ class BookAppointment extends Component {
     );
   }
 }
+
+BookAppointment.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default BookAppointment;

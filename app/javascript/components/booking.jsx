@@ -64,7 +64,7 @@ class BookingComponent extends React.Component {
     }
     return (
       <div>
-        { listBooking.map((item) => (
+        { listBooking.map(item => (
           <div key={item[0]} className="container">
             <div className="row">
               <div className="booking col-12">
