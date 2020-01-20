@@ -12,12 +12,11 @@ class BookingComponent extends React.Component {
   }
 
   async componentDidMount() {
-    const resAtend = await axios.get('/api/v1/atend');
+    const { atends, doctors, specialties } = this.props;
     const booking = await axios.get('/api/v1/user/1/booking');
-    const { doctors, specialties } = this.props;
-    const dictAtend = {};
 
-    resAtend.data.atends.forEach((item) => {
+    const dictAtend = {};
+    atends.forEach((item) => {
       const s = item.date;
       const year = s.slice(0, 4);
       const month = s.slice(5, 7);
@@ -84,6 +83,7 @@ class BookingComponent extends React.Component {
 const mapStateToProps = state => ({
   doctors: state.doctors,
   specialties: state.specialties,
+  atends: state.atends,
 });
 
 const mapDispatchToProps = () => ({
@@ -108,6 +108,12 @@ BookingComponent.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       area: PropTypes.string,
+    }),
+  ).isRequired,
+  atends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      date: PropTypes.string,
     }),
   ).isRequired,
 };
