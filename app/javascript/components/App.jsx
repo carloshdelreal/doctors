@@ -5,6 +5,7 @@ import Home from './home';
 import SearchDoctor from './searchDoctor';
 import DoctorProfile from './doctorProfile';
 import BookAppointment from './bookAppoint';
+import AdminComponent from './admin';
 
 const csrfToken = document.querySelector('[name=csrf-token]').content;
 axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
@@ -21,6 +22,7 @@ export default class App extends Component {
             <Route path="/doctor/:id" component={DoctorProfile} />
             <Route path="/book/:id" component={BookAppointment} />
             <Route path="/about" render={() => <div>About</div>} />
+            <Route path="/admin" component={AdminComponent} />
           </Switch>
         </div>
       </BrowserRouter>

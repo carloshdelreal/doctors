@@ -16,7 +16,9 @@ const Home = () => {
     <div className="home container">
       <div className="home__nav row justify-content-between">
         <div className="col-6 text-left">
-          <img src={menu} alt="menu" />
+          <Link to="/admin">
+            <img src={menu} alt="menu" />
+          </Link>
         </div>
         <div className="home__location col-6">
           <div>

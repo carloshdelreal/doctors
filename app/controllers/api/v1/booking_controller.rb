@@ -10,7 +10,7 @@ class Api::V1::BookingController < ApplicationController
         booking: @bookings.as_json(only: %i[label hour minutes atend_id id])}
     else
       render json: { success: true,
-        booking: @bookings.as_json}
+        booking: @bookings.as_json(only: %i[id label hour minutes doctor_id atend_id])}
     end
   end
 

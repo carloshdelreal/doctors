@@ -1,0 +1,22 @@
+.admin{
+  &__nav{
+    a{
+      color: $green-text;
+    }
+  }
+}
+
+.booking{
+  font-size: smaller;
+  border-bottom: 1px solid lightgrey;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  h5{
+    color: $green-text;
+    font-size: medium;
+  }
+  p{
+    font-size: x-small;
+    margin: 0
+  }
+}
