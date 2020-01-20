@@ -28,4 +28,10 @@ const loadSpecial = special => ({
   payload: special,
 });
 
-export { specialtyFilter, toggleOffSpecialty, loadDoctors, loadAtend, loadSpecial };
+export {
+  specialtyFilter,
+  toggleOffSpecialty,
+  loadDoctors,
+  loadAtend,
+  loadSpecial,
+};
