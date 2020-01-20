@@ -1,3 +1,4 @@
+import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min';
 import '../../assets/stylesheets/main.scss';
 
