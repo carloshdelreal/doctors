@@ -41,7 +41,7 @@ const mapStateToProps = state => ({
   specialties: state.specialties,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = () => ({
 });
 
 DoctorList.defaultProps = {

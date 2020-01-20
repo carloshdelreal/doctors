@@ -1,10 +1,13 @@
+/* eslint-disable import/no-named-as-default */
 import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import React, { Component } from 'react';
 import Home from './home';
 import SearchDoctor from './searchDoctor';
+// eslint-disable-next-line import/no-named-as-default
+// eslint-disable-next-line import/no-named-as-default-member
+import BookAppointment from './appointBooking';
 import DoctorProfile from './doctorProfile';
-import BookAppointment from './bookAppoint';
 import AdminComponent from './admin';
 
 const csrfToken = document.querySelector('[name=csrf-token]').content;

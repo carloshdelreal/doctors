@@ -6,11 +6,21 @@ class Api::V1::BookingController < ApplicationController
 
   def index
     if params[:doctor_id]
-      render json: { success: true,
-                     booking: @bookings.as_json(only: %i[label hour minutes atend_id id]) }
+      render json:
+        {
+          success: true,
+          booking: @bookings.as_json(
+            only: %i[id label hour minutes atend_id]
+          )
+        }
     else
-      render json: { success: true,
-                     booking: @bookings.as_json(only: %i[id label hour minutes doctor_id atend_id]) }
+      render json:
+        {
+          success: true,
+          booking: @bookings.as_json(
+            only: %i[id label hour minutes doctor_id atend_id]
+          )
+        }
     end
   end
 

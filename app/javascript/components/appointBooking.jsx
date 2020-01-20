@@ -82,7 +82,7 @@ class BookAppointment extends Component {
     this.setState({ time: time.time, selected: time.index, atend_id: time.atend_id });
   }
 
-  bookAppointment = async e => {
+  bookAppointment = async () => {
     const { id } = this.props.match.params;
     const { atend_id } = this.state;
     const res = await axios.patch(`/api/v1/doctor/${id}/booking/${atend_id}`, {
