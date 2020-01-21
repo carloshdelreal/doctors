@@ -1,0 +1,308 @@
+@import './variables';
+
+body{
+  font-family: $font-montserrat;
+}
+
+.notice,
+.alert{
+  position: fixed;
+  color: $red-heart;
+}
+.doctorsList{
+  &__results{
+    color: $green-text;
+  }
+}
+
+.doctor{
+  font-size: smaller;
+  p{
+    line-height: 0.9;
+  }
+  &__title{
+    padding-bottom: 0px;
+    font-size: medium;
+  }
+  &__specialty{
+    color: grey;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  &__docname{
+    color: lightgrey;
+  }
+  &__location{
+    text-transform: capitalize;
+    color: lightgrey;
+  }
+  &__price_exp_likes{
+    font-size: smaller;
+    font-weight: 600;
+    &--likes{
+      p{
+        position: relative;
+        span{
+          position: absolute;
+          top: -5px;
+          right: 22px;
+          color: red;
+          font-size: large;
+        }
+      }
+    }
+  }
+  &__btn-call{
+    color: $green-text;
+    border: 1px solid $green-text;
+  }
+  &__btn-book{
+    color: white;
+    background: linear-gradient(90deg, $green-text 0%, $dark-background 100%);
+    border:$light-background;
+  }
+  &__view_profile{
+    color: $green-text;
+    text-transform: uppercase;
+    font-size: smaller;
+    font-weight: 600;
+  }
+}
+.specialty{
+  &__button{
+    color: $green-text;
+    font-size: smaller;
+    font-weight: 600;
+    padding: 1rem 0px;
+  }
+}
+.specialtiesList{
+  &__instructions{
+    font-size: smaller;
+  }
+}
+.nav-component{
+  margin-top: -1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  background-color:$light-background;
+  &__button{
+    color: $green-text;
+    background: none;
+    border: none;
+    font-weight: 900;
+  }
+}
+
+.item{
+  flex: 1;
+}
+
+.doctorProfile,
+.home{
+  .profile__email,
+  .profile__logout,
+  &__logout,
+  &__email{
+    margin: 1rem auto;
+
+    p{
+      margin-bottom: 0;
+    }
+  }
+  &__location{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    &--text{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+  &__nav{
+    background-color: $light-background;
+    color: $green-text;
+    font-size: smaller;
+    padding: 2rem 0 0 0;
+  }
+  &__images{
+    background-color: $light-background;
+    p{
+      font-size: 0.7rem;
+      padding-top: 0.5rem;
+    }
+    &--left{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 2rem;
+    }
+    &--right{
+      width: 100%;
+      padding: 0rem;
+      margin: 0rem 0 0 -1.5rem;
+    }
+  }
+  &__search{
+    &--input{
+      input{
+        border-radius: 16px;
+        width: 100%;
+        border: 1px solid $gray-lines;
+        position: relative;
+        top: -14px;
+        -webkit-box-shadow: -4px 3px 4px -2px rgba(179,179,179,1);
+        -moz-box-shadow: -4px 3px 4px -2px rgba(179,179,179,1);
+        box-shadow: -4px 3px 4px -2px rgba(179,179,179,1);
+        line-height: 1.8rem;
+        padding-left: 1rem;
+        padding-right: 2.5rem;
+        font-size: 0.7rem;
+      }
+      div{
+        position: absolute;
+        right: 25px;
+        top: -12px;
+      }
+    }
+  }
+  &__items{
+    &--button{
+      color: $green-text;
+      font-size: smaller;
+      font-weight: 600;
+      padding: 1rem 0px;
+      p{
+        margin: 0;
+      }
+      a{
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.doctorProfile{
+  background: linear-gradient(0deg, $dark-background 0%, $green-text 100%);
+  &__nav{
+    background: none;
+    margin: 0;
+    &>div{
+      padding: 0;
+    }
+  }
+  &__location{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    &>div{
+      padding: 0.1rem;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+    &--text{
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 1rem;
+    }
+  }
+  &__heading{
+    h3{
+      font-size: 1rem;
+      color: white;
+      font-weight: 600;
+    }
+    p{
+      font-size: smaller;
+      color: white;
+    }
+    &--picture{
+      img{
+        border-radius: 50%;
+      }  
+    }
+    &--exp{
+      color: white;
+    }
+  }
+  &__navInfo{
+    font-size: small;
+    color: $gray-text;
+    &>div{
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $gray-lines;
+    }
+  }
+  &__doctorInfo{
+    padding: 1rem;
+    h5{
+      font-size: medium;
+    }
+    li{
+      font-size: small;
+    }
+  }
+  &__bookButton{
+    color: white;
+    margin-top: 2rem;
+    background: linear-gradient(90deg, $green-text 0%, $dark-background 100%);
+    border:$light-background;
+    border-radius: 16px;
+    font-size: small;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 3rem;
+  }
+  &__clinicInfo{
+    padding: 1rem;
+    h5{
+      font-size: medium;
+    }
+    p{
+      font-size: small;
+    }
+    img{
+      width: 100%;
+    }
+  }
+  &__feedback{
+    padding: 1rem;
+  }
+}
+
+.bookAppointment{
+  &__header{
+    background: linear-gradient(90deg, $green-text 0%, $dark-background 100%);
+    overflow-x: hidden;
+    &--title{
+      color: white;
+      font-weight: 600;
+    }
+  }
+  &__time{
+    font-size: x-small;
+    color: $green-text;
+  }
+  .doctorCard{
+    font-size: small;
+    h3{
+      font-size: large;
+    }
+    p{
+      margin: 0;
+    }
+  }
+  .doctorProfile{
+    &__bookButton{
+      margin: 1rem 0;
+    }
+  }
+}

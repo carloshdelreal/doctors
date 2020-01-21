@@ -1,0 +1,33 @@
+.carrouselSelector{
+  width: 350px;
+  margin: auto;
+  overflow: hidden;
+  &__row{
+    flex-wrap: nowrap;
+    transition: transform 0.4s;
+    
+    &>.selected{
+      button{
+        font-weight: 600;
+        color: white;
+      }
+    }
+    &>div{
+      padding: 0;
+      text-align: center;
+    }
+  }
+  h5{
+    text-align: center;
+    font-size: x-small;
+    color: white;
+    font-weight: 600;
+  }
+  button{
+    background: none;
+    border: none;
+    color: rgba(white, 0.5);
+  }
+}
+
+
