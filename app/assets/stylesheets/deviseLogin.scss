@@ -1,0 +1,60 @@
+@import './variables';
+
+body{
+  background-color: $light-background;
+}
+
+.devise__form{
+  input{
+    border-radius: 16px;
+    width: 75%;
+    border: 1px solid $gray-lines;
+  }
+  label{
+    padding-top: 0.5rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  &--sharedLinks{
+    padding: 2rem 0px;
+    a{
+      display: block;
+      margin: auto;
+      background: linear-gradient(90deg, gray 0%, $gray-text 100%);
+      border:$light-background;
+      border-radius: 16px;
+      color: white;
+      width: 75%;
+    }
+  }
+}
+
+#user_remember_me{
+  width: 100%;
+}
+
+.actions{
+  input{
+    color: white;
+    margin-top: 2rem;
+    background: linear-gradient(90deg, $green-text 0%, $dark-background 100%);
+    border:$light-background;
+  }
+}
+.notice,
+.alert{
+  position: fixed;
+  color: $red-heart;
+}
+#error_explanation{
+  color: $red-heart;
+  font-size: x-small;
+  h2{
+    font-size: small;
+  }
+  ul{
+    list-style: none;
+    padding: 0;
+  }
+}
+
