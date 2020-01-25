@@ -108,3 +108,9 @@ This license lets others distribute, remix, adapt, and build upon your work, eve
 
 * [How to Run react components on rails](https://www.youtube.com/watch?v=5F_JUvPq410)
 * [Building Awesome react apps](http://collectiveidea.com/blog/archives/2013/06/13/building-awesome-rails-apis-part-1)
+
+# Future Features
+
+In the original design of this application are other modules that could be developed as the one for requiring an ambulance, or buying medication, I definitely want to implement those features.
+
+I would like to implement a feature in which doctors can register and open their appointments, keep track of their patients and register a clinic history, as there is feedback commenting for the users to grade the doctor's service I think is important that doctors grade and register the behavior of the patients as well as theirs discipline if they recomend a diet or taking timely the medication.
