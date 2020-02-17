@@ -98,6 +98,39 @@ Then, go to [http://localhost:3000/](http://localhost:3000/)
 
 Voila!
 
+## Doctors App Features
+
+To view the live demo, click the [Doctor's App link](https://doctorscapstone.herokuapp.com/). You will be taken to the login page. There, you will be able to register as a new user. You may also log in using  `carlos@email.com` as your email and `foobar` as the password.
+
+<figure class="figure">
+    <img src="documentation/doctors/home.png">
+</figure>
+
+Once you log in, you will be taken to the homepage. As this is a partial implementation, only the nav bar and the Doctor’s button are currently available.
+
+Click on Doctor and behold the doctor search bar! There, you can select a specialty and the corresponding doctors will be filtered and displayed for you. Select the doctor that you prefer.
+
+<figure class="figure">
+    <img src="documentation/doctors/search_doctor.png">
+</figure>
+
+Once you select your desired doctor, you will then be able to see information and feedback about the doctor and clinic. If you are happy with your selection, you can click on **Book Appointment**.
+
+<figure class="figure">
+    <img src="documentation/doctors/doctor_profile.png">
+</figure>
+
+The most important and elaborate part of this application is the booking system, in which every doctor has a totally independent set of available appointments. You can choose the date and time for the appointment and click Book. You will then be taken to a confirmation window and voila: your appointment is arranged.
+
+The nicest feature about this implementation is that the selected appointment will no longer be available to other users.
+
+Once your appointment has been set, you can then go to the main men and check your booked appointments.
+
+<figure class="figure">
+    <img src="documentation/doctors/booking.png">
+</figure>
+
+
 # License
 
 This code is licensed under the Creative Commons Attribution CC BY therefore if you use this code partially or totally don't forget to reference.
