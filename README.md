@@ -100,7 +100,7 @@ Voila!
 
 ## Doctors App Features
 
-To view the live demo, click the [Doctor's App link](https://doctorscapstone.herokuapp.com/){:target="_blank"}. You will be taken to the login page. There, you will be able to register as a new user. You may also log in using  `carlos@email.com` as your email and `foobar` as the password.
+To view the live demo, click the [Doctor's App link](https://doctorscapstone.herokuapp.com/). You will be taken to the login page. There, you will be able to register as a new user. You may also log in using  `carlos@email.com` as your email and `foobar` as the password.
 
 <figure class="figure">
     <img src="documentation/doctors/home.png">
