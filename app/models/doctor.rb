@@ -8,4 +8,7 @@ class Doctor < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :attendings, through: :bookings, source: 'atend'
+  validates :docname, presence: true
+  validates :location, presence: true
+  validates :fullname, presence: true
 end
