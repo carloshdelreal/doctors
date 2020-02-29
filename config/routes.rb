@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :user, only: [:show] 
+      resources :user, only: [:index]
       resources :user, only: [:index] do
         resources :booking, only: [:index]
       end
@@ -32,4 +32,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get '*path', to: redirect('/')
 end
