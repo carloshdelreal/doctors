@@ -11,7 +11,7 @@ import SearchDoctor from './searchDoctor';
 // eslint-disable-next-line import/no-named-as-default-member
 import BookAppointment from './appointBooking';
 import DoctorProfile from './doctorProfile';
-import AdminComponent from './admin';
+import AdminComponent from './admin/admin';
 import { loadDoctors, loadAtend, loadSpecial } from '../actions/index';
 
 const csrfToken = document.querySelector('[name=csrf-token]').content;

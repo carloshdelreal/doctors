@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import backCaret from '../images/backCaret.png';
+import backCaret from '../../images/backCaret.png';
 import BookingComponent from './booking';
 
 

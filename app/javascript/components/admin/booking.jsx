@@ -61,6 +61,12 @@ class BookingComponent extends React.Component {
         </div>
       );
     }
+    if (listBooking.length === 0) {
+      return (
+        <div>You have not appointments</div>
+      );
+    }
+
     return (
       <div>
         { listBooking.map(item => (
