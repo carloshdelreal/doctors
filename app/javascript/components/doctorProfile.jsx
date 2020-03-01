@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -85,7 +86,14 @@ const Feedback = () => (
 class DoctorProfile extends React.Component {
   constructor() {
     super();
+    this.state = {};
     this.searchAgain = this.searchAgain.bind(this);
+  }
+
+  async componentDidMount() {
+    const { match } = this.props;
+    const docInfo = await axios.get(`/api/v1/doctor/${match.params.id}`);
+    this.setState(docInfo.data);
   }
 
   searchAgain() {
@@ -94,7 +102,8 @@ class DoctorProfile extends React.Component {
   }
 
   render() {
-    const { match } = this.props;
+    const { match, specialtyDict } = this.props;
+    const { fullname, specialization_id } = this.state;
     return (
       <div>
         <div className="doctorProfile container">
@@ -116,7 +125,7 @@ class DoctorProfile extends React.Component {
 
           <div className="doctorProfile__heading row justify-content-center">
             <div className="col-12 text-center">
-              <h3>Dr Hans Landa</h3>
+              <h3>{`Dr. ${fullname}`}</h3>
             </div>
             <div className="col-10 text-center">
               <div className="doctorProfile__heading--call d-inline-block">
@@ -130,7 +139,7 @@ class DoctorProfile extends React.Component {
               </div>
             </div>
             <div className="col-12 text-center">
-              <p>Orthopedy</p>
+              <p>{specialtyDict[specialization_id]}</p>
             </div>
           </div>
 
@@ -197,7 +206,10 @@ class DoctorProfile extends React.Component {
   }
 }
 
-const mapStateToProps = () => ({
+// eslint-disable-next-line arrow-parens
+const mapStateToProps = state => ({
+  specialties: state.specialties,
+  specialtyDict: state.specialtyDict,
 });
 
 // eslint-disable-next-line arrow-parens

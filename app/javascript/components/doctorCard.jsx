@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import userImage from '../images/user.png';
 
-const Doctor = ({ doctor, specialty }) => (
+const DoctorCard = ({ doctor, specialty }) => (
   <div className="doctor col-xs-12 col-sm-6 px-4 py-4 d-flex justify-content-center">
     <div className="container shadow-sm p-3">
       <div className="row">
@@ -57,14 +57,16 @@ const Doctor = ({ doctor, specialty }) => (
           <button type="button" className="btn doctor__btn-call btn-block btn-sm rounded-pill">Call</button>
         </div>
         <div className="col-6 col-sm-6 col-md-6 col-lg-4 text-left">
-          <button type="button" className="btn doctor__btn-book btn-block btn-sm rounded-pill">Book</button>
+          <Link to={`/doctor/${doctor.id}/book`}>
+            <button type="button" className="btn doctor__btn-book btn-block btn-sm rounded-pill">Book</button>
+          </Link>
         </div>
       </div>
     </div>
   </div>
 );
 
-Doctor.propTypes = {
+DoctorCard.propTypes = {
   doctor: PropTypes.shape({
     id: PropTypes.number,
     docname: PropTypes.string,
@@ -78,4 +80,4 @@ Doctor.propTypes = {
   }).isRequired,
 };
 
-export default Doctor;
+export default DoctorCard;

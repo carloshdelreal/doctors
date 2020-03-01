@@ -12,7 +12,7 @@ import SearchDoctor from './searchDoctor';
 import BookAppointment from './appointBooking';
 import DoctorProfile from './doctorProfile';
 import AdminComponent from './admin/admin';
-import { loadDoctors, loadAtend, loadSpecial } from '../actions/index';
+import { loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict } from '../actions/index';
 
 const csrfToken = document.querySelector('[name=csrf-token]').content;
 axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
@@ -20,7 +20,7 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   async componentDidMount() {
-    const { loadDoctors, loadAtend, loadSpecial } = this.props;
+    const { loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict } = this.props;
     const resDoctors = await axios.get('/api/v1/doctor');
     loadDoctors(resDoctors.data);
 
@@ -28,7 +28,17 @@ class App extends Component {
     loadAtend(resAtend.data.atends);
 
     const resSpecial = await axios.get('api/v1/specialization');
-    loadSpecial(resSpecial.data);
+    const specialties = resSpecial.data;
+    loadSpecial(specialties);
+
+    const specialtyDict = {};
+    specialties.forEach((specialty) => {
+      if (specialtyDict[specialty.id] === undefined) {
+        specialtyDict[specialty.id] = specialty.area;
+      }
+    });
+
+    loadSpecialtyDict(specialtyDict);
   }
 
   render() {
@@ -38,8 +48,8 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/doctor" exact component={SearchDoctor} />
-            <Route path="/doctor/:id" exact component={DoctorProfile} />
-            <Route path="/doctor/:id/book" component={BookAppointment} />
+            <Route path="/doctor/:id/book" exact component={BookAppointment} />
+            <Route path="/doctor/:id" component={DoctorProfile} />
             <Route path="/about" render={() => <div>About</div>} />
             <Route path="/admin" component={AdminComponent} />
           </Switch>
@@ -57,6 +67,7 @@ const mapDispatchToProps = dispatch => ({
   loadDoctors: doctors => dispatch(loadDoctors(doctors)),
   loadAtend: atends => dispatch(loadAtend(atends)),
   loadSpecial: special => dispatch(loadSpecial(special)),
+  loadSpecialtyDict: dict => dispatch(loadSpecialtyDict(dict)),
 });
 
 App.defaultProps = {
@@ -66,6 +77,7 @@ App.propTypes = {
   loadDoctors: PropTypes.instanceOf(Function).isRequired,
   loadAtend: PropTypes.instanceOf(Function).isRequired,
   loadSpecial: PropTypes.instanceOf(Function).isRequired,
+  loadSpecialtyDict: PropTypes.instanceOf(Function).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

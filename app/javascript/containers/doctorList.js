@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Doctor from '../components/doctor';
+import DoctorCard from '../components/doctorCard';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DoctorList extends Component {
@@ -22,7 +22,7 @@ class DoctorList extends Component {
         <p className="doctorsList__results">{ `Results showing ${specialty.area} Doctors` }</p>
         <div className="row p-1">
           {specialtydoctors.map(doctor => (
-            <Doctor
+            <DoctorCard
               key={doctor.id}
               doctor={doctor}
               specialty={specialty}

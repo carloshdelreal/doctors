@@ -3,6 +3,7 @@ const TOGGLE_OFF_SPECIALTY = 'TOGGLE_OFF_SPECIALTY';
 const LOAD_DOCTORS = 'LOAD_DOCTORS';
 const LOAD_ATEND = 'LOAD_ATEND';
 const LOAD_SPECIAL = 'LOAD_SPECIAL';
+const LOAD_SPECIALDICT = 'LOAD_SPECIALDICT';
 
 const specialtyFilter = specialty => ({
   type: CHANGE_SPECIALTY,
@@ -28,10 +29,16 @@ const loadSpecial = special => ({
   payload: special,
 });
 
+const loadSpecialtyDict = specialdict => ({
+  type: LOAD_SPECIALDICT,
+  payload: specialdict,
+});
+
 export {
   specialtyFilter,
   toggleOffSpecialty,
   loadDoctors,
   loadAtend,
   loadSpecial,
+  loadSpecialtyDict,
 };
