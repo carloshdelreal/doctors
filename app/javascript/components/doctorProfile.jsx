@@ -139,7 +139,7 @@ class DoctorProfile extends React.Component {
               </div>
             </div>
             <div className="col-12 text-center">
-              <p>{specialtyDict[specialization_id]}</p>
+              <p className="text-capitalize">{specialtyDict[specialization_id]}</p>
             </div>
           </div>
 
@@ -170,17 +170,17 @@ class DoctorProfile extends React.Component {
         </div>
         <div className="container">
           <div className="doctorProfile__navInfo row">
-            <div className="col-4">
+            <div className="col-4 text-center">
               <NavLink to={match.url} activeStyle={{ color: 'red' }}>
                 Doctor&apos;s Info
               </NavLink>
             </div>
-            <div className="col-4">
+            <div className="col-4 text-center">
               <NavLink to={`${match.url}/email`} activeStyle={{ color: 'red' }}>
                 Clinic&apos;s Info
               </NavLink>
             </div>
-            <div className="col-4">
+            <div className="col-4 text-center">
               <NavLink to={`${match.url}/address`} activeStyle={{ color: 'red' }}>
                 Feedback
               </NavLink>
