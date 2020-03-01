@@ -13,7 +13,7 @@ class BookingComponent extends React.Component {
 
   async componentDidMount() {
     const { atends, doctors, specialties } = this.props;
-    const booking = await axios.get('/api/v1/user/1/booking');
+    const booking = await axios.get('/api/v1/booking');
 
     const dictAtend = {};
     atends.forEach((item) => {
