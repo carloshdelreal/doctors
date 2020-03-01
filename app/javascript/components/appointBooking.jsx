@@ -1,11 +1,12 @@
 import axios from 'axios';
 import Calendar from 'react-calendar';
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BackCaretWhite from '../images/backCaretWhite.png';
 import CarrouselSelector from './carrousel';
 import ModalComponent from './modal';
+import DoctorBookingCard from './doctorBookingCard';
 
 class BookAppointment extends Component {
   constructor(props) {
@@ -95,6 +96,7 @@ class BookAppointment extends Component {
       selected,
       show,
     } = this.state;
+    const { id } = this.props.match.params;
 
     if (booking === null) {
       return (<div>Loading</div>);
@@ -155,38 +157,7 @@ class BookAppointment extends Component {
               <div className="bookAppointment__time pb-3">
                 { time ? `Apointment for ${date.getDate()} of ${month}, ${date.getFullYear()} at ${time.getHours()}:${time.getMinutes()}` : "Select an Appointment's date and Time"}
               </div>
-              <div className="doctorCard row justify-content-center">
-                <div className="col-12 text-center">
-                  <h3>Dr Hans Landa</h3>
-                </div>
-                <div className="col-12 text-center">
-                  <p>Orthopedy</p>
-                </div>
-                <div className="container py-1">
-                  <div className="row justify-content-center">
-                    <div className="col-8">
-                      <div className="row">
-                        <div className="text-left p-0 col-3">
-                          <p>
-                            $150
-                          </p>
-                        </div>
-                        <div className="text-center p-0 col-6">
-                          <p>
-                            12 yrs of exp
-                          </p>
-                        </div>
-                        <div className="doctor__price_exp_likes--likes text-right p-0 col-3">
-                          <p>
-                            <span>&hearts;</span>
-                            123
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <DoctorBookingCard id={id} />
             </div>
           </div>
         </div>

@@ -3,13 +3,13 @@
 import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy} from 'react';
 import PropTypes from 'prop-types';
 import Home from './home';
 import SearchDoctor from './searchDoctor';
 // eslint-disable-next-line import/no-named-as-default
 // eslint-disable-next-line import/no-named-as-default-member
-import BookAppointment from './appointBooking';
+const BookAppointment = lazy(() => import('./appointBooking'));
 import DoctorProfile from './doctorProfile';
 import AdminComponent from './admin/admin';
 import { loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict } from '../actions/index';
@@ -44,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/doctor" exact component={SearchDoctor} />
@@ -53,7 +53,7 @@ class App extends Component {
             <Route path="/about" render={() => <div>About</div>} />
             <Route path="/admin" component={AdminComponent} />
           </Switch>
-        </div>
+        </Suspense>
       </BrowserRouter>
     );
   }
