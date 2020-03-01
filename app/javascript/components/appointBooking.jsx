@@ -155,7 +155,9 @@ class BookAppointment extends Component {
                 </div>
               </div>
               <div className="bookAppointment__time pb-3">
-                { time ? `Apointment for ${date.getDate()} of ${month}, ${date.getFullYear()} at ${time.getHours()}:${time.getMinutes()}` : "Select an Appointment's date and Time"}
+                { time
+                  ? `Appointment for ${date.getDate()} of ${month}, ${date.getFullYear()} at ${time.getHours()}:${time.getMinutes()}`
+                  : "Select an Appointment's date and Time"}
               </div>
               <DoctorBookingCard id={id} />
             </div>
