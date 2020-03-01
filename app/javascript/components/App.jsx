@@ -38,8 +38,8 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/doctor" exact component={SearchDoctor} />
-            <Route path="/doctor/:id" component={DoctorProfile} />
-            <Route path="/book/:id" component={BookAppointment} />
+            <Route path="/doctor/:id" exact component={DoctorProfile} />
+            <Route path="/doctor/:id/book" component={BookAppointment} />
             <Route path="/about" render={() => <div>About</div>} />
             <Route path="/admin" component={AdminComponent} />
           </Switch>

@@ -186,7 +186,7 @@ class DoctorProfile extends React.Component {
         <div className="container">
           <div className="doctorProfile__bookAppointment row justify-content-center">
             <div className="col-10">
-              <Link to={`/book/${match.params.id}`}>
+              <Link to={`/doctor/${match.params.id}/book`}>
                 <button className="btn btn-block doctorProfile__bookButton" type="button">Book Appointment</button>
               </Link>
             </div>

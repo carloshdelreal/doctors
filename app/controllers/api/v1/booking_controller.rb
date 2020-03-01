@@ -6,7 +6,6 @@ class Api::V1::BookingController < ApplicationController
 
   def index
     render json: {
-        success: true,
         booking: @bookings.as_json(
           only: %i[id label hour minutes doctor_id atend_id]
         )
