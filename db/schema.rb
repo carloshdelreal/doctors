@@ -15,19 +15,6 @@ ActiveRecord::Schema.define(version: 2020_01_19_192711) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "appointments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "doctor_id", null: false
-    t.date "date"
-    t.time "time"
-    t.float "duration"
-    t.boolean "confirmed"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
-    t.index ["user_id"], name: "index_appointments_on_user_id"
-  end
-
   create_table "atends", force: :cascade do |t|
     t.date "date", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -78,8 +65,6 @@ ActiveRecord::Schema.define(version: 2020_01_19_192711) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "appointments", "doctors"
-  add_foreign_key "appointments", "users"
   add_foreign_key "bookings", "atends"
   add_foreign_key "bookings", "doctors"
   add_foreign_key "bookings", "users"

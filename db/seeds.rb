@@ -85,7 +85,7 @@ end
 
 User.all.each do | user |
   Doctor.all.shuffle[0..5] do | doctor |
-    booking = Booking.where(doctor_id: doctor.id booked: false user_id: nill).sample
+    booking = Booking.where(doctor_id: doctor.id, booked: false, user_id: nil).sample
     booking.user_id = user.id
     booking.booked = true
     booking.save

@@ -21,11 +21,14 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :user, only: [:index]
+      namespace :user do
+        resources :booking, only: [:index]
+        get 'upcoming', to: 'booking#upcoming'
+      end
       resources :booking, only: [:index]
       resources :specialization, only: [:show, :index]
       resources :atend, only: [:index]
       resources :doctor, only: [:show, :index] do
-        resources :appointment, only: [:index, :show]
         resources :booking, only: [:index, :update]
       end
     end
