@@ -16,7 +16,9 @@ class BookingComponent extends React.Component {
     const res = await axios.get('/api/v1/user/booking');
     const booking = sortBookingByDatetime(res.data.booking);
 
+    // eslint-disable-next-line arrow-parens
     booking.forEach(item => {
+      // eslint-disable-next-line no-param-reassign
       item.datetimeObject = new Date(
         item.datetime.slice(0, 4),
         parseInt(item.datetime.slice(5, 7), 10) - 1,

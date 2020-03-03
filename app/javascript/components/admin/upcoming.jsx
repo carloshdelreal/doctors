@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import sortBookingByDatetime from '../../scripts/sorting';
+import greenCheck from '../../images/greencheck.png';
 
 class UpcomingBookingComponent extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class UpcomingBookingComponent extends React.Component {
       <div>
         { listBooking.map(item => (
           <div key={item.booking_id} className="container">
-            <div className="row">
+            <div className="row bookingRow">
               <div className="booking col-12">
                 <h5>
                   { `${new Date(
@@ -45,6 +46,9 @@ class UpcomingBookingComponent extends React.Component {
                   )}, at ${item.label} ` }
                 </h5>
                 <p>{ `With Dr. ${item.doctor.fullname}, ${item.specialty}, at ${item.doctor.location}` }</p>
+              </div>
+              <div className="bookingCheck">
+                <img src={greenCheck} alt="green check" />
               </div>
             </div>
           </div>
