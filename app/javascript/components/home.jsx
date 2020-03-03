@@ -74,6 +74,14 @@ class Home extends Component {
           </div>
           <div className="col-5 col-xs-6 col-sm-4 p-2 d-flex justify-content-center">
             <button className="home__items--button btn btn-lg btn-block shadow-sm" type="button">
+              <Link to="/admin">
+                <img src={setReminder} alt="set reminder" />
+                <p>Appointments</p>
+              </Link>
+            </button>
+          </div>
+          <div className="col-5 col-xs-6 col-sm-4 p-2 d-flex justify-content-center">
+            <button className="home__items--button btn btn-lg btn-block shadow-sm" type="button">
               <img src={setReminder} alt="set reminder" />
               <p>Set Reminder</p>
             </button>
