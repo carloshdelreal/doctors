@@ -4,6 +4,7 @@ const LOAD_DOCTORS = 'LOAD_DOCTORS';
 const LOAD_ATEND = 'LOAD_ATEND';
 const LOAD_SPECIAL = 'LOAD_SPECIAL';
 const LOAD_SPECIALDICT = 'LOAD_SPECIALDICT';
+const LOAD_USERDATA = 'LOAD_USERDATA';
 
 const specialtyFilter = specialty => ({
   type: CHANGE_SPECIALTY,
@@ -34,6 +35,11 @@ const loadSpecialtyDict = specialdict => ({
   payload: specialdict,
 });
 
+const loadUserData = user => ({
+  type: LOAD_USERDATA,
+  payload: user,
+});
+
 export {
   specialtyFilter,
   toggleOffSpecialty,
@@ -41,4 +47,5 @@ export {
   loadAtend,
   loadSpecial,
   loadSpecialtyDict,
+  loadUserData,
 };

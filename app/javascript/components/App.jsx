@@ -12,7 +12,7 @@ import SearchDoctor from './searchDoctor';
 const BookAppointment = lazy(() => import('./appointBooking'));
 import DoctorProfile from './doctorProfile';
 import AdminComponent from './admin/admin';
-import { loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict } from '../actions/index';
+import { loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict, loadUserData } from '../actions/index';
 
 const csrfToken = document.querySelector('[name=csrf-token]').content;
 axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
@@ -20,12 +20,16 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   async componentDidMount() {
-    const { loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict } = this.props;
+    const { loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict, loadUserData } = this.props;
+
     const resDoctors = await axios.get('/api/v1/doctor');
     loadDoctors(resDoctors.data);
 
     const resAtend = await axios.get('/api/v1/atend');
     loadAtend(resAtend.data.atends);
+
+    const resUser = await axios.get('/api/v1/user');
+    loadUserData(resUser.data);
 
     const resSpecial = await axios.get('api/v1/specialization');
     const specialties = resSpecial.data;
@@ -68,6 +72,7 @@ const mapDispatchToProps = dispatch => ({
   loadAtend: atends => dispatch(loadAtend(atends)),
   loadSpecial: special => dispatch(loadSpecial(special)),
   loadSpecialtyDict: dict => dispatch(loadSpecialtyDict(dict)),
+  loadUserData: user => dispatch(loadUserData(user)),
 });
 
 App.defaultProps = {
@@ -78,6 +83,7 @@ App.propTypes = {
   loadAtend: PropTypes.instanceOf(Function).isRequired,
   loadSpecial: PropTypes.instanceOf(Function).isRequired,
   loadSpecialtyDict: PropTypes.instanceOf(Function).isRequired,
+  loadUserData: PropTypes.instanceOf(Function).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
