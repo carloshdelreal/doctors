@@ -22,7 +22,7 @@ RSpec.describe Api::V1::BookingController, type: :controller do
       user = FactoryBot.create(:user)
       doctor = FactoryBot.create(:doctor)
       sign_in(user)
-      FactoryBot.create(:booking, doctor: doctor)
+      FactoryBot.create(:booking, :yesterday, doctor: doctor)
       get :index, params: { doctor_id: doctor.id }
       respond_to be_success
       parsed_body = JSON.parse(response.body)

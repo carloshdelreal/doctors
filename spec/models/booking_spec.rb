@@ -4,8 +4,16 @@ require 'rails_helper'
 
 RSpec.describe Booking, type: :model do
   describe 'Create Booking' do
-    it 'Valid create' do
-      expect(FactoryBot.build(:booking)).to be_valid
+    it 'for today' do
+      expect(FactoryBot.build(:booking, :today)).to be_valid
+    end
+
+    it 'for tomorrow' do
+      expect(FactoryBot.build(:booking, :tomorrow)).to be_valid
+    end
+
+    it 'for yesterday' do
+      expect(FactoryBot.build(:booking, :yesterday)).to be_valid
     end
   end
 
