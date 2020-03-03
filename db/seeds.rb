@@ -46,7 +46,7 @@ s = Specialization.all
 end
 
 
-200.times do |x|
+(-20..60).each do |x|
   Atend.create(date: Time.now() + x.day)
 end
 
@@ -91,4 +91,22 @@ User.all.each do | user |
     booking.save
   end
 end
+
+u = User.first
+d = Doctor.first
+booking = Atend.where(date: Time.now - 10.day)[0].bookings.where(doctor_id: d.id)[0]
+booking.user_id = u.id
+booking.booked = true
+booking.save
+
+booking = Atend.where(date: Time.now - 8.day)[0].bookings.where(doctor_id: d.id)[0]
+booking.user_id = u.id
+booking.booked = true
+booking.save
+
+booking = Atend.where(date: Time.now - 3.day)[0].bookings.where(doctor_id: d.id)[0]
+booking.user_id = u.id
+booking.booked = true
+booking.save
+
 
