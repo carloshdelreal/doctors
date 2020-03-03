@@ -113,12 +113,13 @@ const mapDispatchToProps = () => ({
 
 
 Home.defaultProps = {
+  userData: null,
 };
 
 Home.propTypes = {
   userData: PropTypes.shape({
     email: PropTypes.string,
-  }).isRequired,
+  }),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
