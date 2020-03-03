@@ -58,6 +58,7 @@ class DoctorBookingCard extends Component {
 
 DoctorBookingCard.propTypes = {
   id: PropTypes.string.isRequired,
+  specialtyDict: PropTypes.shape({}).isRequired,
 };
 
 
@@ -66,7 +67,7 @@ const mapStateToProps = state => ({
 });
 
 // eslint-disable-next-line arrow-parens
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = () => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorBookingCard);

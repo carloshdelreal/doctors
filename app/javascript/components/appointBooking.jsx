@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Calendar from 'react-calendar';
-import React, { Component, lazy, Suspense } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BackCaretWhite from '../images/backCaretWhite.png';
@@ -96,7 +96,7 @@ class BookAppointment extends Component {
       selected,
       show,
     } = this.state;
-    const { id } = this.props.match.params;
+    const { match } = this.props;
 
     if (booking === null) {
       return (<div>Loading</div>);
@@ -159,7 +159,7 @@ class BookAppointment extends Component {
                   ? `Appointment for ${date.getDate()} of ${month}, ${date.getFullYear()} at ${time.getHours()}:${time.getMinutes()}`
                   : "Select an Appointment's date and Time"}
               </div>
-              <DoctorBookingCard id={id} />
+              <DoctorBookingCard id={match.params.id} />
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import SearchBox from './searchBox';
 import menu from '../images/menu.png';
 import location from '../images/location.png';
@@ -98,7 +99,7 @@ class Home extends Component {
       </div>
     );
   }
-};
+}
 
 // eslint-disable-next-line arrow-parens
 const mapStateToProps = state => ({
@@ -115,6 +116,9 @@ Home.defaultProps = {
 };
 
 Home.propTypes = {
+  userData: PropTypes.shape({
+    email: PropTypes.string,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

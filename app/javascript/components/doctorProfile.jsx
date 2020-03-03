@@ -103,6 +103,7 @@ class DoctorProfile extends React.Component {
 
   render() {
     const { match, specialtyDict } = this.props;
+    // eslint-disable-next-line camelcase
     const { fullname, specialization_id } = this.state;
     return (
       <div>
@@ -225,6 +226,7 @@ DoctorProfile.propTypes = {
     }),
   }).isRequired,
   toggleOffSpecialty: PropTypes.instanceOf(Function).isRequired,
+  specialtyDict: PropTypes.shape({}).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorProfile);
