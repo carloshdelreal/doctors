@@ -6,6 +6,8 @@
     "backcaret",
     "csrf",
     "fullname",
+    "graycheck",
+    "greencheck",
     "stetoscope"
   ]
 }
