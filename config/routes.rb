@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :booking, only: [:index]
       resources :specialization, only: [:show, :index]
       resources :atend, only: [:index]
+      get '/doctor/search/:searchstring', to: 'doctor#search'
       resources :doctor, only: [:show, :index] do
         resources :booking, only: [:index, :update]
       end
