@@ -14,7 +14,9 @@ RSpec.describe User, type: :model do
     end
 
     it 'Creates a user without a valid email' do
-      expect(FactoryBot.build(:user, email: 'antonio.antonio.com')).not_to be_valid
+      expect(
+        FactoryBot.build(:user, email: 'antonio.antonio.com')
+      ).not_to be_valid
     end
 
     it 'Creates a user without a valid email regex' do

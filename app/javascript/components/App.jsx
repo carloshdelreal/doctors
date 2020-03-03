@@ -3,16 +3,18 @@
 import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import React, { Component, Suspense, lazy} from 'react';
+import React, { Component, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import Home from './home';
 import SearchDoctor from './searchDoctor';
 // eslint-disable-next-line import/no-named-as-default
 // eslint-disable-next-line import/no-named-as-default-member
-const BookAppointment = lazy(() => import('./appointBooking'));
+import BookAppointment from './appointBooking';
 import DoctorProfile from './doctorProfile';
 import AdminComponent from './admin/admin';
-import { loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict, loadUserData } from '../actions/index';
+import {
+  loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict, loadUserData,
+} from '../actions/index';
 
 const csrfToken = document.querySelector('[name=csrf-token]').content;
 axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
@@ -20,7 +22,9 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   async componentDidMount() {
-    const { loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict, loadUserData } = this.props;
+    const {
+      loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict, loadUserData,
+    } = this.props;
 
     const resDoctors = await axios.get('/api/v1/doctor');
     loadDoctors(resDoctors.data);
