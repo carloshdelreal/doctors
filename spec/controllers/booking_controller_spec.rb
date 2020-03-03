@@ -25,7 +25,6 @@ RSpec.describe Api::V1::BookingController, type: :controller do
       FactoryBot.create(:booking, :yesterday, doctor: doctor)
       get :index, params: { doctor_id: doctor.id }
       respond_to be_success
-      parsed_body = JSON.parse(response.body)
       expect(response.body).to have_content(doctor.id)
     end
   end

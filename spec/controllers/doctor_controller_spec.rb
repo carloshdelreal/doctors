@@ -88,7 +88,7 @@ RSpec.describe Api::V1::DoctorController, type: :controller do
     it 'returns maximum 7 items' do
       user = FactoryBot.create(:user)
       sign_in(user)
-      loc = "miami"
+      loc = 'miami'
       10.times do
         FactoryBot.create(:doctor, location: loc)
       end
@@ -99,6 +99,5 @@ RSpec.describe Api::V1::DoctorController, type: :controller do
       expect(parsed_body.length).to be(7)
       expect(response.body).to have_content(loc)
     end
-
   end
 end
