@@ -3,6 +3,7 @@ import { Link, NavLink, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import backCaret from '../../images/backCaret.png';
 import BookingComponent from './booking';
+import UpcomingBookingComponent from './upcoming';
 
 
 const AdminComponent = ({ match }) => (
@@ -33,7 +34,7 @@ const AdminComponent = ({ match }) => (
     </div>
     <div className="container pb-3">
       <Route exact path={match.url} component={BookingComponent} />
-      <Route path={`${match.url}/upcoming`} render={() => (<BookingComponent upcoming />)} />
+      <Route path={`${match.url}/upcoming`} component={UpcomingBookingComponent} />
     </div>
   </div>
 );
