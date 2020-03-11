@@ -30,4 +30,12 @@ RSpec.describe Doctor, type: :model do
       expect(FactoryBot.build(:doctor, specialization_id: nil)).not_to be_valid
     end
   end
+
+  describe 'doctors are stored lowercase' do
+    it 'create docname with uppercases' do
+      doctor = FactoryBot.create(:doctor, docname: 'Carlos')
+      doctor_stored = Doctor.find(doctor.id)
+      expect(doctor_stored.docname).to eq('carlos')
+    end
+  end
 end
