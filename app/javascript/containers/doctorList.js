@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DoctorCard from '../components/doctorCard';
+import searchingFilter from '../images/searchingVariables.png';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DoctorList extends Component {
@@ -20,6 +21,9 @@ class DoctorList extends Component {
     return (
       <div className="doctorsList px-3">
         <p className="doctorsList__results">{ `Results showing ${specialty.area} Doctors` }</p>
+        <div className="searchingFilter">
+          <img src={searchingFilter} alt="searching variables" />
+        </div>
         <div className="row p-1">
           {specialtydoctors.map(doctor => (
             <DoctorCard
