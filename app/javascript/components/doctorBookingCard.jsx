@@ -33,12 +33,12 @@ class DoctorBookingCard extends Component {
               <div className="row">
                 <div className="text-left p-0 col-3">
                   <p>
-                    $150
+                    { doctor ? `$${doctor.price}` : '' }
                   </p>
                 </div>
                 <div className="text-center p-0 col-6">
                   <p>
-                    12 yrs of exp
+                    { doctor ? `${doctor.experience} yrs of exp` : '' }
                   </p>
                 </div>
                 <div className="doctor__price_exp_likes--likes text-right p-0 col-3">

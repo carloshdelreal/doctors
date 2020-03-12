@@ -36,13 +36,15 @@ end
 cities = ['bogota', 'medellin', 'cali', 'los angeles', 'san francisco', 'miami', 'newyork', 'dallas', 'houston', 'knoxville', 'albuquerque']
 s = Specialization.all
 
-50.times do
+200.times do
   name = Faker::Name.unique.first_name
   lastname = Faker::Name.last_name
   Doctor.create!( docname: name+lastname,
                   location: cities.sample,
                   fullname: name + " " +lastname,
-                  specialization_id: s.sample.id )
+                  specialization_id: s.sample.id,
+                  experience: (1..20).to_a.sample,
+                  price: (50..500).step(50).to_a.sample )
 end
 
 

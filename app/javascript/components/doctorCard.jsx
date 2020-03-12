@@ -26,12 +26,12 @@ const DoctorCard = ({ doctor, specialty }) => (
               <div className="row">
                 <div className="text-left p-0 col-4">
                   <p>
-                    $150
+                    { `$${doctor.price}` }
                   </p>
                 </div>
                 <div className="text-center p-0 col-4">
                   <p>
-                    12 yrs of exp
+                    { `${doctor.experience} yrs of exp` }
                   </p>
                 </div>
                 <div className="doctor__price_exp_likes--likes text-right p-0 col-4">
@@ -73,6 +73,8 @@ DoctorCard.propTypes = {
     location: PropTypes.string,
     fullname: PropTypes.string,
     specialization_id: PropTypes.number,
+    experience: PropTypes.number,
+    price: PropTypes.number,
   }).isRequired,
   specialty: PropTypes.shape({
     id: PropTypes.number,

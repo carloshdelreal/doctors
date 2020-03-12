@@ -6,7 +6,8 @@ class Api::V1::DoctorController < ApplicationController
 
   def index
     render json: Doctor.select(
-      :id, :docname, :location, :fullname, :specialization_id
+      :id, :docname, :location,
+      :fullname, :specialization_id, :experience, :price
     ).all
   end
 
@@ -22,7 +23,8 @@ class Api::V1::DoctorController < ApplicationController
 
   def set_doctor
     @doctor = Doctor.select(
-      :id, :docname, :location, :fullname, :specialization_id
+      :id, :docname, :location,
+      :fullname, :specialization_id, :experience, :price
     ).find_by(id: params[:id])
   end
 

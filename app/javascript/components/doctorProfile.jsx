@@ -103,8 +103,13 @@ class DoctorProfile extends React.Component {
 
   render() {
     const { match, specialtyDict } = this.props;
-    // eslint-disable-next-line camelcase
-    const { fullname, specialization_id } = this.state;
+    const {
+      fullname,
+      // eslint-disable-next-line camelcase
+      specialization_id,
+      experience,
+      price,
+    } = this.state;
     return (
       <div>
         <div className="doctorProfile container">
@@ -150,12 +155,12 @@ class DoctorProfile extends React.Component {
                 <div className="row">
                   <div className="text-left p-0 col-3">
                     <p>
-                      $150
+                      { `$${price}` }
                     </p>
                   </div>
                   <div className="text-center p-0 col-6">
                     <p>
-                      12 yrs of exp
+                      { `${experience} yrs of exp` }
                     </p>
                   </div>
                   <div className="doctor__price_exp_likes--likes text-right p-0 col-3">
