@@ -5,6 +5,8 @@ FactoryBot.define do
     sequence(:docname) { |n| "thegooddoctor#{n}" }
     sequence(:location) { |n| "city#{n}" }
     sequence(:fullname) { |n| "Carlos Del Real Estrada#{n}" }
+    sequence(:experience) { (1..20).to_a.sample }
+    sequence(:price) { (50..500).step(50).to_a.sample }
     specialization
   end
 end

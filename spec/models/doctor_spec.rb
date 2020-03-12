@@ -29,6 +29,14 @@ RSpec.describe Doctor, type: :model do
     it 'with empty specialization' do
       expect(FactoryBot.build(:doctor, specialization_id: nil)).not_to be_valid
     end
+
+    it 'with empty experience' do
+      expect(FactoryBot.build(:doctor, experience: nil)).not_to be_valid
+    end
+
+    it 'with empty price' do
+      expect(FactoryBot.build(:doctor, experience: nil)).not_to be_valid
+    end
   end
 
   describe 'doctors are stored lowercase' do

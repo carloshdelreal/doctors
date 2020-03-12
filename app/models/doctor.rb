@@ -11,6 +11,8 @@ class Doctor < ApplicationRecord
   validates :docname, presence: true
   validates :location, presence: true
   validates :fullname, presence: true
+  validates :experience, presence: true
+  validates :price, presence: true
   before_save :downcase_fields
 
   def downcase_fields
