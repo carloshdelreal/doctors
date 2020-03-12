@@ -7,8 +7,34 @@ import searchingFilter from '../images/searchingVariables.png';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DoctorList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayFilter: false,
+      experience: 15,
+      price: 300,
+    };
+    this.toggleFilter = this.toggleFilter.bind(this);
+    this.slideExperience = this.slideExperience.bind(this);
+    this.slidePrice = this.slidePrice.bind(this);
+  }
+
+  toggleFilter() {
+    const { displayFilter } = this.state;
+    this.setState({ displayFilter: !displayFilter });
+  }
+
+  slideExperience(event) {
+    this.setState({ experience: event.target.value });
+  }
+
+  slidePrice(event) {
+    this.setState({ price: event.target.value });
+  }
+
   render() {
     const { doctors, specialties, specialtySelected } = this.props;
+    const { displayFilter, experience, price } = this.state;
     let specialtydoctors;
     let specialty;
     if (specialtySelected === null) {
@@ -22,8 +48,30 @@ class DoctorList extends Component {
       <div className="doctorsList px-3">
         <p className="doctorsList__results">{ `Results showing ${specialty.area} Doctors` }</p>
         <div className="searchingFilter">
-          <img src={searchingFilter} alt="searching variables" />
+          <button type="button" onClick={this.toggleFilter}>
+            <img src={searchingFilter} alt="searching variables" />
+          </button>
         </div>
+        { !displayFilter
+          ? null
+          : (
+            <div className="row sliderFilters">
+              <div className="col-12">
+                <h3>Filter by:</h3>
+                <p>
+                  Experience:
+                  { experience === '15' ? ` ${experience}+ years` : ` < ${experience} years`}
+                </p>
+                <input onChange={this.slideExperience} value={experience} type="range" min="0" max="15" className="slider" />
+                <p>
+                  Price:
+                  { price === '300' ? ` $${price}+` : ` < $${price}`}
+                </p>
+                <input onChange={this.slidePrice} value={price} type="range" min="50" max="300" className="slider" />
+              </div>
+            </div>
+          )}
+
         <div className="row p-1">
           {specialtydoctors.map(doctor => (
             <DoctorCard
