@@ -11,7 +11,7 @@ class DoctorList extends Component {
     super(props);
     this.state = {
       displayFilter: false,
-      experience: 15,
+      experience: 0,
       price: 300,
     };
     this.toggleFilter = this.toggleFilter.bind(this);
@@ -41,7 +41,10 @@ class DoctorList extends Component {
       specialtydoctors = doctors;
       specialty = null;
     } else {
-      specialtydoctors = doctors.filter(doctor => doctor.specialization_id === specialtySelected);
+      specialtydoctors = doctors.filter(doctor => (
+        doctor.specialization_id === specialtySelected
+        && doctor.price < price
+        && doctor.experience > experience));
       specialty = specialties[specialtySelected - 1];
     }
     return (
@@ -60,7 +63,7 @@ class DoctorList extends Component {
                 <h3>Filter by:</h3>
                 <p>
                   Experience:
-                  { experience === '15' ? ` ${experience}+ years` : ` < ${experience} years`}
+                  { experience === '15' ? ` ${experience}+ years` : ` > ${experience} years`}
                 </p>
                 <input onChange={this.slideExperience} value={experience} type="range" min="0" max="15" className="slider" />
                 <p>
