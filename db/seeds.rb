@@ -36,7 +36,7 @@ end
 cities = ['bogota', 'medellin', 'cali', 'los angeles', 'san francisco', 'miami', 'newyork', 'dallas', 'houston', 'knoxville', 'albuquerque']
 s = Specialization.all
 
-200.times do
+120.times do
   name = Faker::Name.unique.first_name
   lastname = Faker::Name.last_name
   Doctor.create!( docname: name+lastname,
@@ -54,22 +54,16 @@ end
 
 def createAfternoonBookings(d, a)
   Booking.create(doctor: d, atend: a, label: "2:00 PM", hour: 14, minutes: 00, booked: false )
-  Booking.create(doctor: d, atend: a, label: "2:30 PM", hour: 14, minutes: 30, booked: false )
   Booking.create(doctor: d, atend: a, label: "3:00 PM", hour: 15, minutes: 00, booked: false )
-  Booking.create(doctor: d, atend: a, label: "3:30 PM", hour: 15, minutes: 30, booked: false )
   Booking.create(doctor: d, atend: a, label: "4:00 PM", hour: 16, minutes: 00, booked: false )
-  Booking.create(doctor: d, atend: a, label: "4:30 PM", hour: 16, minutes: 30, booked: false )
+  
 end
 
 def createMorningBookings(d, a)
   Booking.create(doctor: d, atend: a, label: "8:00 AM", hour: 8, minutes: 00, booked: false )
-  Booking.create(doctor: d, atend: a, label: "8:30 AM", hour: 8, minutes: 30, booked: false )
   Booking.create(doctor: d, atend: a, label: "9:00 AM", hour: 9, minutes: 00, booked: false )
-  Booking.create(doctor: d, atend: a, label: "9:30 AM", hour: 9, minutes: 30, booked: false )
   Booking.create(doctor: d, atend: a, label: "10:00 AM", hour: 10, minutes: 00, booked: false )
-  Booking.create(doctor: d, atend: a, label: "10:30 AM", hour: 10, minutes: 30, booked: false )
   Booking.create(doctor: d, atend: a, label: "11:00 AM", hour: 11, minutes: 00, booked: false )
-  Booking.create(doctor: d, atend: a, label: "11:30 AM", hour: 11, minutes: 30, booked: false )
   Booking.create(doctor: d, atend: a, label: "12:00 AM", hour: 12, minutes: 00, booked: false )
 end
 
