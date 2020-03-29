@@ -12,10 +12,13 @@ class Api::V1::BookingController < ApplicationController
   end
 
   def update
-    booking = Booking.find(params[:id])
-    booking.user_id = current_user.id
-    booking.booked = true
-    if booking.save
+    booking = Booking.find_by(id: params[:id])
+    if booking && booking.user_id.nil?
+      booking.user_id = current_user.id
+      booking.booked = true
+    end
+
+    if booking && booking.user_id == current_user.id && booking.save
       render json: { success: true }
     else
       render json: { success: false }
