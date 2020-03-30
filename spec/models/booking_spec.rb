@@ -17,6 +17,20 @@ RSpec.describe Booking, type: :model do
     end
   end
 
+  describe 'Create a booking that has not been assigned' do
+    it 'for today' do
+      expect(FactoryBot.build(:booking, :today_empty)).to be_valid
+    end
+
+    it 'for tomorrow' do
+      expect(FactoryBot.build(:booking, :tomorrow_empty)).to be_valid
+    end
+
+    it 'for yesterday' do
+      expect(FactoryBot.build(:booking, :yesterday_empty)).to be_valid
+    end
+  end
+
   describe 'Does not create a Booking' do
     it 'with empty doctor' do
       expect(FactoryBot.build(:booking, doctor: nil)).not_to be_valid
