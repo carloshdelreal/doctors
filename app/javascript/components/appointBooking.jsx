@@ -81,9 +81,8 @@ class BookAppointment extends Component {
   }
 
   async bookAppointment() {
-    const { match } = this.props;
     const { atend_id: atendId } = this.state;
-    axios.patch(`/api/v1/doctor/${match.params.id}/booking/${atendId}`, {
+    axios.patch(`/api/v1/booking/${atendId}`, {
       booking: { booking: true },
     });
   }
