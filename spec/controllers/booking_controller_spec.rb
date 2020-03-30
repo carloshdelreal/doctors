@@ -23,10 +23,10 @@ RSpec.describe Api::V1::BookingController, type: :controller do
 
     it 'shows all the bookings for the doctor' do
       doctor = FactoryBot.create(:doctor)
-      FactoryBot.create(:booking, :yesterday, doctor: doctor)
+      booking = FactoryBot.create(:booking, :yesterday, doctor: doctor)
       get :index, params: { doctor_id: doctor.id }
       respond_to be_success
-      expect(response.body).to have_content(doctor.id)
+      expect(response.body).to have_content(booking.id)
     end
 
     it 'Updates a booking relating current user to booking' do
