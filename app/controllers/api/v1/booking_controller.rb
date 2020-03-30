@@ -15,7 +15,6 @@ class Api::V1::BookingController < ApplicationController
     booking = Booking.find_by(id: params[:id])
     if booking && booking.user_id.nil?
       booking.user_id = current_user.id
-      booking.booked = true
     end
 
     if booking && booking.user_id == current_user.id && booking.save
@@ -28,6 +27,6 @@ class Api::V1::BookingController < ApplicationController
   private
 
   def set_bookings
-    @bookings = Booking.where(doctor_id: params[:doctor_id], booked: false)
+    @bookings = Booking.where(doctor_id: params[:doctor_id], user_id: nil)
   end
 end
