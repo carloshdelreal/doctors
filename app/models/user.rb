@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :physicians, through: :appointments, source: 'doctor'
 
+  # Validatiosn
+  validates :email, :encrypted_password, presence: true
+
   # Facebook Omniauth
   def self.new_with_session(params, session)
     super.tap do |user|

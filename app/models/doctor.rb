@@ -8,11 +8,9 @@ class Doctor < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :attendings, through: :bookings, source: 'atend'
-  validates :docname, presence: true
-  validates :location, presence: true
-  validates :fullname, presence: true
-  validates :experience, presence: true
-  validates :price, presence: true
+  validates :docname, :location, :fullname, :experience, :price,
+            :specialization_id, presence: true
+
   before_save :downcase_fields
 
   def downcase_fields
