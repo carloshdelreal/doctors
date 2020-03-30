@@ -33,7 +33,7 @@ RSpec.describe Api::V1::BookingController, type: :controller do
       doctor = FactoryBot.create(:doctor)
       booking = FactoryBot.create(:booking, :yesterday, doctor: doctor)
       put :update, params: { id: booking.id }
-      expect(response.body).to have_content("{\"success\":true}")
+      expect(response.body).to have_content('{"success":true}')
     end
   end
 
@@ -47,7 +47,7 @@ RSpec.describe Api::V1::BookingController, type: :controller do
 
     it 'Returns success: false when booking an unexisting record' do
       put :update, params: { id: 2000 }
-      expect(response.body).to have_content("{\"success\":false}")
+      expect(response.body).to have_content('{"success":false}')
     end
 
     it 'Returns success: false when booking an already booked record' do
@@ -55,7 +55,7 @@ RSpec.describe Api::V1::BookingController, type: :controller do
       user2 = FactoryBot.create(:user)
       booking2 = FactoryBot.create(:booking, :tomorrow, doctor: doctor, user_id: user2.id)
       put :update, params: { id: booking2.id }
-      expect(response.body).to have_content("{\"success\":false}")
+      expect(response.body).to have_content('{"success":false}')
     end
   end
 end

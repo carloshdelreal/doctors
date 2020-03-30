@@ -11,7 +11,7 @@ FactoryBot.define do
     end
 
     trait :day_after_tomorrow do
-      date { Time.now + 2.day}
+      date { Time.now + 2.day }
     end
 
     trait :yesterday do
