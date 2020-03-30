@@ -10,6 +10,10 @@ FactoryBot.define do
       date { Time.now + 1.day }
     end
 
+    trait :day_after_tomorrow do
+      date { Time.now + 2.day}
+    end
+
     trait :yesterday do
       date { Time.now - 1.day }
     end

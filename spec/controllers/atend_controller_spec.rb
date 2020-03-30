@@ -11,17 +11,17 @@ RSpec.describe Api::V1::AtendController, type: :controller do
   end
 
   describe 'Accessing logged in' do
-    it 'responds successfully to index request' do
+    before(:example) do
       user = FactoryBot.create(:user)
       sign_in(user)
+    end
+    it 'responds successfully to index request' do
       get :index
       respond_to be_success
     end
 
     it 'shows all future the Atends' do
-      user = FactoryBot.create(:user)
-      sign_in(user)
-      FactoryBot.create(:atend, :tomorrow)
+      FactoryBot.create(:atend, :day_after_tomorrow)
       get :index
       respond_to be_success
       parsed_body = JSON.parse(response.body)
@@ -30,8 +30,6 @@ RSpec.describe Api::V1::AtendController, type: :controller do
     end
 
     it 'does not show the past atends' do
-      user = FactoryBot.create(:user)
-      sign_in(user)
       FactoryBot.create(:atend, :yesterday)
       get :index
       respond_to be_success
