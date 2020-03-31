@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DoctorCard from '../components/doctorCard';
+import DoctorCards from '../components/doctorCards';
 import searchingFilter from '../images/searchingVariables.png';
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -75,15 +75,7 @@ class DoctorList extends Component {
             </div>
           )}
 
-        <div className="row p-1">
-          {specialtydoctors.map(doctor => (
-            <DoctorCard
-              key={doctor.id}
-              doctor={doctor}
-              specialty={specialty}
-            />
-          ))}
-        </div>
+        <DoctorCards doctors={specialtydoctors} specialty={specialty} />
       </div>
     );
   }
