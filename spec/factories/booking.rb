@@ -7,7 +7,6 @@ FactoryBot.define do
     minutes { 30 }
     doctor { FactoryBot.create(:doctor) }
 
-    
     trait :today do
       user_id { FactoryBot.create(:user) }
       atend { FactoryBot.create(:atend, :today) }

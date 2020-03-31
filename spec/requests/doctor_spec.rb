@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Doctor Request" do
+RSpec.describe 'Doctor Request' do
   describe 'Doctors index' do
     before(:example) do
       @user = FactoryBot.create(:user)
-      post '/users/sign_in', params: { "user": { "email": @user.email, "password": @user.password, "remember_me"=>"0"}, "commit"=>"Log in"}
+      post '/users/sign_in', params: { "user": { "email": @user.email, "password": @user.password, 'remember_me' => '0' }, 'commit' => 'Log in' }
       follow_redirect!
     end
     after(:each) do
       expect(response).to have_http_status(200)
-      expect(response.content_type).to eq("application/json; charset=utf-8")
+      expect(response.content_type).to eq('application/json; charset=utf-8')
     end
 
     it 'request /api/v1/doctor' do
@@ -29,18 +31,17 @@ RSpec.describe "Doctor Request" do
   describe 'Doctor show' do
     before(:example) do
       @user = FactoryBot.create(:user)
-      post '/users/sign_in', params: { "user": { "email": @user.email, "password": @user.password, "remember_me"=>"0"}, "commit"=>"Log in"}
+      post '/users/sign_in', params: { "user": { "email": @user.email, "password": @user.password, 'remember_me' => '0' }, 'commit' => 'Log in' }
       follow_redirect!
     end
     after(:each) do
       expect(response).to have_http_status(200)
-      expect(response.content_type).to eq("application/json; charset=utf-8")
+      expect(response.content_type).to eq('application/json; charset=utf-8')
     end
 
     it 'request /api/v1/doctor/:id' do
       doctor = FactoryBot.create(:doctor)
       get "/api/v1/doctor/#{doctor.id}"
     end
-    
   end
 end
