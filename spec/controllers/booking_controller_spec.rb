@@ -55,7 +55,8 @@ RSpec.describe Api::V1::BookingController, type: :controller do
     it 'Returns success: false when booking an already booked record' do
       doctor = FactoryBot.create(:doctor)
       user2 = FactoryBot.create(:user)
-      booking2 = FactoryBot.create(:booking, :tomorrow, doctor: doctor, user_id: user2.id)
+      booking2 = FactoryBot.create(
+        :booking, :tomorrow, doctor: doctor, user_id: user2.id)
       put :update, params: { id: booking2.id }
       expect(response.body).to have_content('{"success":false}')
     end

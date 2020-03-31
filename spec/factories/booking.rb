@@ -11,12 +11,10 @@ FactoryBot.define do
       user_id { FactoryBot.create(:user) }
       atend { FactoryBot.create(:atend, :today) }
     end
-
     trait :tomorrow do
       user_id { FactoryBot.create(:user) }
       atend { FactoryBot.create(:atend, :tomorrow) }
     end
-
     trait :yesterday do
       user_id { FactoryBot.create(:user) }
       atend { FactoryBot.create(:atend, :yesterday) }
@@ -25,11 +23,9 @@ FactoryBot.define do
     trait :today_empty do
       atend { FactoryBot.create(:atend, :today) }
     end
-
     trait :tomorrow_empty do
       atend { FactoryBot.create(:atend, :tomorrow) }
     end
-
     trait :yesterday_empty do
       atend { FactoryBot.create(:atend, :yesterday) }
     end

@@ -9,7 +9,13 @@ RSpec.describe 'Specialization Request' do
         FactoryBot.create(:specialization)
       end
       @user = FactoryBot.create(:user)
-      post '/users/sign_in', params: { "user": { "email": @user.email, "password": @user.password, 'remember_me' => '0' }, 'commit' => 'Log in' }
+      post '/users/sign_in', params: {
+        "user": {
+          "email": @user.email,
+          "password": @user.password,
+          'remember_me' => '0'
+        }, 'commit' => 'Log in'
+      }
       follow_redirect!
     end
     after(:each) do

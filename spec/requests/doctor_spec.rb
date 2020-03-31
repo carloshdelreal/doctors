@@ -6,7 +6,13 @@ RSpec.describe 'Doctor Request' do
   describe 'Doctors index' do
     before(:example) do
       @user = FactoryBot.create(:user)
-      post '/users/sign_in', params: { "user": { "email": @user.email, "password": @user.password, 'remember_me' => '0' }, 'commit' => 'Log in' }
+      post '/users/sign_in', params: {
+        "user": {
+          "email": @user.email,
+          "password": @user.password,
+          'remember_me' => '0'
+        }, 'commit' => 'Log in' 
+      }
       follow_redirect!
     end
     after(:each) do
@@ -31,7 +37,13 @@ RSpec.describe 'Doctor Request' do
   describe 'Doctor show' do
     before(:example) do
       @user = FactoryBot.create(:user)
-      post '/users/sign_in', params: { "user": { "email": @user.email, "password": @user.password, 'remember_me' => '0' }, 'commit' => 'Log in' }
+      post '/users/sign_in', params: {
+        "user": {
+          "email": @user.email,
+          "password": @user.password,
+          'remember_me' => '0'
+        }, 'commit' => 'Log in'
+      }
       follow_redirect!
     end
     after(:each) do
