@@ -12,8 +12,9 @@ import SearchDoctor from './searchDoctor';
 import BookAppointment from './appointBooking';
 import DoctorProfile from './doctorProfile';
 import AdminComponent from './admin/admin';
+import sortBookingByDatetime from '../scripts/sorting';
 import {
-  loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict, loadUserData,
+  loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict, loadUserData, loadUserBookings,
 } from '../actions/index';
 
 const csrfToken = document.querySelector('[name=csrf-token]').content;
@@ -23,7 +24,7 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 class App extends Component {
   async componentDidMount() {
     const {
-      loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict, loadUserData,
+      loadDoctors, loadAtend, loadSpecial, loadSpecialtyDict, loadUserData, loadUserBookings,
     } = this.props;
 
     const resDoctors = await axios.get('/api/v1/doctor');
@@ -47,6 +48,23 @@ class App extends Component {
     });
 
     loadSpecialtyDict(specialtyDict);
+
+    const res = await axios.get('/api/v1/user/booking');
+    const booking = sortBookingByDatetime(res.data.booking);
+
+    // eslint-disable-next-line arrow-parens
+    booking.forEach(item => {
+      // eslint-disable-next-line no-param-reassign
+      item.datetimeObject = new Date(
+        item.datetime.slice(0, 4),
+        parseInt(item.datetime.slice(5, 7), 10) - 1,
+        item.datetime.slice(8, 10),
+        item.datetime.slice(11, 13),
+        item.datetime.slice(14, 16),
+        0,
+      );
+    });
+    loadUserBookings(booking);
   }
 
   render() {
@@ -73,10 +91,8 @@ const mapDispatchToProps = dispatch => ({
   loadSpecial: special => dispatch(loadSpecial(special)),
   loadSpecialtyDict: dict => dispatch(loadSpecialtyDict(dict)),
   loadUserData: user => dispatch(loadUserData(user)),
+  loadUserBookings: bookings => dispatch(loadUserBookings(bookings)),
 });
-
-App.defaultProps = {
-};
 
 App.propTypes = {
   loadDoctors: PropTypes.instanceOf(Function).isRequired,
@@ -84,6 +100,7 @@ App.propTypes = {
   loadSpecial: PropTypes.instanceOf(Function).isRequired,
   loadSpecialtyDict: PropTypes.instanceOf(Function).isRequired,
   loadUserData: PropTypes.instanceOf(Function).isRequired,
+  loadUserBookings: PropTypes.instanceOf(Function).isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(App);

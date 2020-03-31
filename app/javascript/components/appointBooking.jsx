@@ -1,12 +1,16 @@
 import axios from 'axios';
 import Calendar from 'react-calendar';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BackCaretWhite from '../images/backCaretWhite.png';
 import CarrouselSelector from './carrousel';
 import ModalComponent from './modal';
 import DoctorBookingCard from './doctorBookingCard';
+import sortBookingByDatetime from '../scripts/sorting';
+import { loadUserBookings } from '../actions/index';
+
 
 class BookAppointment extends Component {
   constructor(props) {
@@ -82,9 +86,28 @@ class BookAppointment extends Component {
 
   async bookAppointment() {
     const { atend_id: atendId } = this.state;
+    const { loadUserBookings } = this.props;
+
     axios.patch(`/api/v1/booking/${atendId}`, {
       booking: { booking: true },
     });
+
+
+    const res = await axios.get('/api/v1/user/booking');
+    const booking = sortBookingByDatetime(res.data.booking);
+    // eslint-disable-next-line arrow-parens
+    booking.forEach(item => {
+      // eslint-disable-next-line no-param-reassign
+      item.datetimeObject = new Date(
+        item.datetime.slice(0, 4),
+        parseInt(item.datetime.slice(5, 7), 10) - 1,
+        item.datetime.slice(8, 10),
+        item.datetime.slice(11, 13),
+        item.datetime.slice(14, 16),
+        0,
+      );
+    });
+    loadUserBookings(booking);
   }
 
   render() {
@@ -175,4 +198,12 @@ BookAppointment.propTypes = {
   }).isRequired,
 };
 
-export default BookAppointment;
+const mapDispatchToProps = dispatch => ({
+  loadUserBookings: bookings => dispatch(loadUserBookings(bookings)),
+});
+
+BookAppointment.propTypes = {
+  loadUserBookings: PropTypes.instanceOf(Function).isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(BookAppointment);

@@ -5,6 +5,7 @@ const LOAD_ATEND = 'LOAD_ATEND';
 const LOAD_SPECIAL = 'LOAD_SPECIAL';
 const LOAD_SPECIALDICT = 'LOAD_SPECIALDICT';
 const LOAD_USERDATA = 'LOAD_USERDATA';
+const LOAD_BOOKINGS = 'LOAD_BOOKINGS';
 
 const specialtyFilter = specialty => ({
   type: CHANGE_SPECIALTY,
@@ -40,6 +41,11 @@ const loadUserData = user => ({
   payload: user,
 });
 
+const loadUserBookings = bookings => ({
+  type: LOAD_BOOKINGS,
+  payload: bookings,
+});
+
 export {
   specialtyFilter,
   toggleOffSpecialty,
@@ -48,4 +54,5 @@ export {
   loadSpecial,
   loadSpecialtyDict,
   loadUserData,
+  loadUserBookings,
 };

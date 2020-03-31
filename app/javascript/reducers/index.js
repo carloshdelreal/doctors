@@ -5,6 +5,7 @@ import doctorsReducer from './doctor';
 import specialtySelectReducer from './selectSpecialty';
 import atendReducer from './atend';
 import userReducer from './user';
+import userBookingsReducer from './userBookings';
 
 const generalReducer = combineReducers({
   doctors: doctorsReducer,
@@ -13,6 +14,7 @@ const generalReducer = combineReducers({
   specialtySelected: specialtySelectReducer,
   atends: atendReducer,
   userData: userReducer,
+  userBookings: userBookingsReducer,
 });
 
 export default generalReducer;
