@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DoctorCards from '../components/doctorCards';
 import searchingFilter from '../images/searchingVariables.png';
+import SlideFiltersComponent from '../components/slideFilters';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DoctorList extends Component {
@@ -25,11 +26,11 @@ class DoctorList extends Component {
   }
 
   slideExperience(event) {
-    this.setState({ experience: event.target.value });
+    this.setState({ experience: parseInt(event.target.value, 10) });
   }
 
   slidePrice(event) {
-    this.setState({ price: event.target.value });
+    this.setState({ price: parseInt(event.target.value, 10) });
   }
 
   render() {
@@ -55,24 +56,16 @@ class DoctorList extends Component {
             <img src={searchingFilter} alt="searching variables" />
           </button>
         </div>
+
         { !displayFilter
           ? null
           : (
-            <div className="row sliderFilters">
-              <div className="col-12">
-                <h3>Filter by:</h3>
-                <p>
-                  Experience:
-                  { experience === '15' ? ` ${experience}+ years` : ` > ${experience} years`}
-                </p>
-                <input onChange={this.slideExperience} value={experience} type="range" min="0" max="15" className="slider" />
-                <p>
-                  Price:
-                  { price === '300' ? ` $${price}+` : ` < $${price}`}
-                </p>
-                <input onChange={this.slidePrice} value={price} type="range" min="50" max="300" className="slider" />
-              </div>
-            </div>
+            <SlideFiltersComponent
+              experience={experience}
+              price={price}
+              slideExperience={this.slideExperience}
+              slidePrice={this.slidePrice}
+            />
           )}
 
         <DoctorCards doctors={specialtydoctors} specialty={specialty} />
