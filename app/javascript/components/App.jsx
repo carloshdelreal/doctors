@@ -67,10 +67,6 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = () => ({
-
-});
-
 const mapDispatchToProps = dispatch => ({
   loadDoctors: doctors => dispatch(loadDoctors(doctors)),
   loadAtend: atends => dispatch(loadAtend(atends)),
@@ -90,4 +86,4 @@ App.propTypes = {
   loadUserData: PropTypes.instanceOf(Function).isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
