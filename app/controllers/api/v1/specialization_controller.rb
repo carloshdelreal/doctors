@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Api::V1::SpecializationController < ApplicationController
   before_action :set_specialty, only: %i[show]
 

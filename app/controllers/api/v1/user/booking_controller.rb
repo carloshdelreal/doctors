@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Api::V1::User::BookingController < ApplicationController
   before_action :set_bookings, only: %i[index upcoming]
   before_action :filter_upcoming, only: %i[upcoming]

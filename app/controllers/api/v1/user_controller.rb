@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Api::V1::UserController < ApplicationController
   before_action :set_user, only: %i[index]
 

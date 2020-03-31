@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe 'Doctor Request' do
@@ -11,7 +9,7 @@ RSpec.describe 'Doctor Request' do
           "email": @user.email,
           "password": @user.password,
           'remember_me' => '0'
-        }, 'commit' => 'Log in' 
+        }, 'commit' => 'Log in'
       }
       follow_redirect!
     end

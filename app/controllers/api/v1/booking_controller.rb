@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Api::V1::BookingController < ApplicationController
   before_action :set_bookings, only: %i[index]
 

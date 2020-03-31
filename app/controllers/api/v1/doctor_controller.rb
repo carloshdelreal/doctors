@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Api::V1::DoctorController < ApplicationController
   before_action :set_doctor, only: %i[show]
   before_action :search_doctor, only: %i[search]

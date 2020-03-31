@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe 'Atend Request' do
@@ -9,12 +7,12 @@ RSpec.describe 'Atend Request' do
       FactoryBot.create(:atend, :today)
       FactoryBot.create(:atend, :tomorrow)
       @user = FactoryBot.create(:user)
-      post '/users/sign_in', params: { 
-        "user": { 
+      post '/users/sign_in', params: {
+        "user": {
           "email": @user.email,
           "password": @user.password,
-          'remember_me' => '0' 
-        }, 'commit' => 'Log in' 
+          'remember_me' => '0'
+        }, 'commit' => 'Log in'
       }
       follow_redirect!
     end

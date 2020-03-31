@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe 'Specialization Request' do
@@ -10,7 +8,7 @@ RSpec.describe 'Specialization Request' do
         "user": {
           "email": @user.email,
           "password": @user.password,
-          'remember_me' => '0' 
+          'remember_me' => '0'
         }, 'commit' => 'Log in'
       }
       follow_redirect!

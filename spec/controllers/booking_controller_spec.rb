@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe Api::V1::BookingController, type: :controller do
@@ -56,7 +54,8 @@ RSpec.describe Api::V1::BookingController, type: :controller do
       doctor = FactoryBot.create(:doctor)
       user2 = FactoryBot.create(:user)
       booking2 = FactoryBot.create(
-        :booking, :tomorrow, doctor: doctor, user_id: user2.id)
+        :booking, :tomorrow, doctor: doctor, user_id: user2.id
+      )
       put :update, params: { id: booking2.id }
       expect(response.body).to have_content('{"success":false}')
     end
