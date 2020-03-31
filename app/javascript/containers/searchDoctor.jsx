@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import NavComponent from './nav';
-import DoctorList from '../containers/doctorList';
-import SpecialtiesList from '../containers/specialtiesList';
-import SearchBox from './searchBox';
+import NavComponent from '../components/nav';
+import DoctorList from './doctorList';
+import SpecialtiesList from './specialtiesList';
+import SearchBox from '../components/searchBox';
 import { toggleOffSpecialty } from '../actions/index';
 
 

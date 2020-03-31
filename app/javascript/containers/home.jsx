@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import SearchBox from './searchBox';
+import SearchBox from '../components/searchBox';
 import menu from '../images/menu.png';
 import location from '../images/location.png';
 import medicoTitle from '../images/homeTitle.png';

@@ -5,12 +5,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import React, { Component, Suspense } from 'react';
 import PropTypes from 'prop-types';
-import Home from './home';
-import SearchDoctor from './searchDoctor';
+import Home from '../containers/home';
+import SearchDoctor from '../containers/searchDoctor';
 // eslint-disable-next-line import/no-named-as-default
 // eslint-disable-next-line import/no-named-as-default-member
-import BookAppointment from './appointBooking';
-import DoctorProfile from './doctorProfile';
+import BookAppointment from '../containers/appointBooking';
+import DoctorProfile from '../containers/doctorProfile';
 import AdminComponent from './admin/admin';
 import sortBookingByDatetime from '../scripts/sorting';
 import {

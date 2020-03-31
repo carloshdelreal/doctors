@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BackCaretWhite from '../images/backCaretWhite.png';
-import CarrouselSelector from './carrousel';
-import ModalComponent from './modal';
-import DoctorBookingCard from './doctorBookingCard';
+import CarrouselSelector from '../components/carrousel';
+import ModalComponent from '../components/modal';
+import DoctorBookingCard from '../components/doctorBookingCard';
 import sortBookingByDatetime from '../scripts/sorting';
 import { loadUserBookings } from '../actions/index';
 
