@@ -34,8 +34,7 @@ const BookingComponent = (props) => {
       ))}
     </div>
   );
-
-}
+};
 
 BookingComponent.propTypes = {
   userBookings: PropTypes.arrayOf(

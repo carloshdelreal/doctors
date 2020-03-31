@@ -6,7 +6,7 @@ import greenCheck from '../../images/greencheck.png';
 const UpcomingBookingComponent = (props) => {
   const { userBookings } = props;
 
-  const userBookingsUpdate = userBookings.filter((item) => (
+  const userBookingsUpdate = userBookings.filter(item => (
     new Date(
       item.datetime.slice(0, 4),
       parseInt(item.datetime.slice(5, 7), 10) - 1,
@@ -49,8 +49,7 @@ const UpcomingBookingComponent = (props) => {
       ))}
     </div>
   );
-
-}
+};
 
 UpcomingBookingComponent.propTypes = {
   userBookings: PropTypes.arrayOf(
