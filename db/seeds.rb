@@ -32,7 +32,7 @@ s = Specialization.all
 
 puts 'Creating Doctors'
 
-60.times do
+70.times do
   name = Faker::Name.unique.first_name
   lastname = Faker::Name.last_name
   Doctor.create!( docname: name+lastname,
