@@ -8,7 +8,7 @@ import UpcomingBookingComponent from './upcoming';
 
 const AdminComponent = ({ match }) => (
   <div>
-    <div className="nav-component d-flex justify-content-space-between">
+    <nav className="nav-component d-flex justify-content-space-between">
       <div className="item d-flex text-left">
         <button className="nav-component__button" type="button">
           <Link to="/">
@@ -17,7 +17,7 @@ const AdminComponent = ({ match }) => (
         </button>
         <button className="nav-component__button" type="button">My Appointments</button>
       </div>
-    </div>
+    </nav>
     <div className="container">
       <div className="doctorProfile__navInfo row">
         <div className="admin__nav col-6 text-center">

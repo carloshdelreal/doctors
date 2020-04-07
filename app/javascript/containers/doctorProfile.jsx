@@ -113,7 +113,7 @@ class DoctorProfile extends React.Component {
     return (
       <div>
         <div className="doctorProfile container">
-          <div className="doctorProfile__nav row justify-content-between">
+          <nav className="doctorProfile__nav row justify-content-between">
             <div className="col-6 text-left">
               <Link to="/doctor" onClick={() => this.searchAgain}>
                 <img src={BackCaretWhite} alt="back caret" />
@@ -127,7 +127,7 @@ class DoctorProfile extends React.Component {
                 bangalore
               </div>
             </div>
-          </div>
+          </nav>
 
           <div className="doctorProfile__heading row justify-content-center">
             <div className="col-12 text-center">

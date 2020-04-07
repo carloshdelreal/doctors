@@ -27,7 +27,7 @@ class Home extends Component {
 
     return (
       <div className="home container">
-        <div className="home__nav row justify-content-between">
+        <nav className="home__nav row justify-content-between">
           <div className="col-6 text-left">
             <Link to="/admin">
               <img src={menu} alt="menu" />
@@ -41,7 +41,7 @@ class Home extends Component {
               bangalore
             </div>
           </div>
-        </div>
+        </nav>
         <div className="home__images row pt-1 pb-3">
           <div className="home__images--left col-6 align-items-center">
             <div>

@@ -136,7 +136,7 @@ class BookAppointment extends Component {
           handleAccept={this.handleAccept}
         />
         <div className="bookAppointment__header container">
-          <div className="doctorProfile__nav row">
+          <nav className="doctorProfile__nav row">
             <div className="col-2 text-left">
               <Link to="/">
                 <img src={BackCaretWhite} alt="back caret" />
@@ -147,7 +147,7 @@ class BookAppointment extends Component {
                 Make Booking
               </div>
             </div>
-          </div>
+          </nav>
           <Calendar
             onChange={this.calendarChange}
             minDate={minBookinDate}
