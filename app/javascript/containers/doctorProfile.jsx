@@ -129,7 +129,7 @@ class DoctorProfile extends React.Component {
             </div>
           </nav>
 
-          <div className="doctorProfile__heading row justify-content-center">
+          <header className="doctorProfile__heading row justify-content-center">
             <div className="col-12 text-center">
               <h3>{`Dr. ${fullname}`}</h3>
             </div>
@@ -147,9 +147,9 @@ class DoctorProfile extends React.Component {
             <div className="col-12 text-center">
               <p className="text-capitalize">{specialtyDict[specialization_id]}</p>
             </div>
-          </div>
+          </header>
 
-          <div className="container doctorProfile__heading--exp doctor__price_exp_likes py-1">
+          <section className="container doctorProfile__heading--exp doctor__price_exp_likes py-1">
             <div className="row justify-content-center">
               <div className="col-8">
                 <div className="row">
@@ -172,9 +172,9 @@ class DoctorProfile extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         </div>
-        <div className="container">
+        <nav className="container">
           <div className="doctorProfile__navInfo row">
             <div className="col-4 text-center">
               <NavLink to={match.url} activeStyle={{ color: 'red' }}>
@@ -192,12 +192,12 @@ class DoctorProfile extends React.Component {
               </NavLink>
             </div>
           </div>
-        </div>
-        <div className="container">
+        </nav>
+        <main className="container">
           <Route exact path={match.url} component={DoctorInfo} />
           <Route path={`${match.url}/email`} component={ClinicInfo} />
           <Route path={`${match.url}/address`} component={Feedback} />
-        </div>
+        </main>
         <div className="container">
           <div className="doctorProfile__bookAppointment row justify-content-center">
             <div className="col-10">

@@ -44,9 +44,9 @@ class SpecialtiesList extends Component {
     }
 
     return (
-      <div className="px-3">
+      <main className="px-3">
         <div className="row">
-          <div className="specialtiesList__instructions col-12 text-center">
+          <header className="specialtiesList__instructions col-12 text-center">
             <img src={stetoscope} alt="stetos logo" />
             <h3>
               Search Doctor
@@ -56,17 +56,21 @@ class SpecialtiesList extends Component {
               symtoms, clinics, hospital, etc. You can also search by
               health concerns listed below
             </p>
-          </div>
-          {selectedSpecialties.map(specialty => (
-            <Specialty
-              key={specialty.id}
-              specialty={specialty}
-              selectSpecialty={() => this.selectSpecialty(specialty)}
-            />
-          ))}
-          { specialtySelected ? (LogoutButton({ onClick: this.unselectSpecialty })) : (null) }
+          </header>
         </div>
-      </div>
+        <section>
+          <div className="row">
+            {selectedSpecialties.map(specialty => (
+              <Specialty
+                key={specialty.id}
+                specialty={specialty}
+                selectSpecialty={() => this.selectSpecialty(specialty)}
+              />
+            ))}
+            { specialtySelected ? (LogoutButton({ onClick: this.unselectSpecialty })) : (null) }
+          </div>
+        </section>
+      </main>
     );
   }
 }

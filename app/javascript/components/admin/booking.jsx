@@ -14,7 +14,7 @@ const BookingComponent = (props) => {
   }
 
   return (
-    <div>
+    <main>
       { userBookings.map(item => (
         <div key={item.booking_id} className="container">
           <div className="row bookingRow">
@@ -32,7 +32,7 @@ const BookingComponent = (props) => {
           </div>
         </div>
       ))}
-    </div>
+    </main>
   );
 };
 

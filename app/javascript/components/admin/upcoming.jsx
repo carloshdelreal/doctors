@@ -24,7 +24,7 @@ const UpcomingBookingComponent = (props) => {
   }
 
   return (
-    <div>
+    <main>
       { userBookingsUpdate.map(item => (
         <div key={item.booking_id} className="container">
           <div className="row bookingRow">
@@ -47,7 +47,7 @@ const UpcomingBookingComponent = (props) => {
           </div>
         </div>
       ))}
-    </div>
+    </main>
   );
 };
 

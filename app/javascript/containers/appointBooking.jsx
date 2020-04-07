@@ -161,7 +161,7 @@ class BookAppointment extends Component {
           />
 
         </div>
-        <div className="container">
+        <main className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-sm-8 col-md-6">
               <div className="row">
@@ -184,7 +184,7 @@ class BookAppointment extends Component {
               <DoctorBookingCard id={match.params.id} />
             </div>
           </div>
-        </div>
+        </main>
       </div>
     );
   }

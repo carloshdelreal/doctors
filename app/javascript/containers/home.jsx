@@ -42,7 +42,7 @@ class Home extends Component {
             </div>
           </div>
         </nav>
-        <div className="home__images row pt-1 pb-3">
+        <header className="home__images row pt-1 pb-3">
           <div className="home__images--left col-6 align-items-center">
             <div>
               <img src={medicoTitle} alt="medico_title" />
@@ -55,9 +55,9 @@ class Home extends Component {
           <div className="home__images--right col-6">
             <img src={homeImage} alt="home_image" />
           </div>
-        </div>
+        </header>
         <SearchBox />
-        <div className="home__items row justify-content-center">
+        <main className="home__items row justify-content-center">
           <div className="col-5 col-xs-6 col-sm-4 p-2 d-flex justify-content-center">
             <button className="home__items--button btn btn-lg btn-block shadow-sm" type="button">
               <img src={pharmacy} alt="pharmacy logo" />
@@ -92,18 +92,20 @@ class Home extends Component {
               <p>Emergency</p>
             </button>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-8 profile__email text-center">
-            <p><strong>hello,</strong></p>
-            <p>{ userData.email }</p>
+        </main>
+        <footer>
+          <div className="row">
+            <div className="col-8 profile__email text-center">
+              <p><strong>hello,</strong></p>
+              <p>{ userData.email }</p>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-8 profile__logout text-center">
-            <a className="btn btn-danger" rel="nofollow" data-method="delete" href="/users/sign_out">Sign out</a>
+          <div className="row">
+            <div className="col-8 profile__logout text-center">
+              <a className="btn btn-danger" rel="nofollow" data-method="delete" href="/users/sign_out">Sign out</a>
+            </div>
           </div>
-        </div>
+        </footer>
       </div>
     );
   }

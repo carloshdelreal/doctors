@@ -49,7 +49,7 @@ class DoctorList extends Component {
       specialty = specialties[specialtySelected - 1];
     }
     return (
-      <div className="doctorsList px-3">
+      <main className="doctorsList px-3">
         <p className="doctorsList__results">{ `Results showing ${specialty.area} Doctors` }</p>
         <div className="searchingFilter">
           <button type="button" onClick={this.toggleFilter}>
@@ -69,7 +69,7 @@ class DoctorList extends Component {
           )}
 
         <DoctorCards doctors={specialtydoctors} specialty={specialty} />
-      </div>
+      </main>
     );
   }
 }
