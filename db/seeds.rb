@@ -49,11 +49,11 @@ puts 'Part: 1/4, Creating atends ...'
 end
 
 def createAfternoonBookings(d, a)
-  Booking.create(doctor_id: d, atend_id: a, label: "2:00 PM", hour: 14, minutes: 00, booked: false )
+  Booking.create(doctor_id: d, atend_id: a, label: "2:00 PM", hour: 14, minutes: 00)
 end
 
 def createMorningBookings(d, a)
-  Booking.create(doctor_id: d, atend_id: a, label: "8:00 AM", hour: 8, minutes: 00, booked: false )
+  Booking.create(doctor_id: d, atend_id: a, label: "8:00 AM", hour: 8, minutes: 00)
 end
 
 puts 'Part: 2/4'
@@ -79,9 +79,8 @@ puts 'creating apointments to users'
 
 User.all.each do | user |
   Doctor.all.shuffle[0..5] do | doctor |
-    booking = Booking.where(doctor_id: doctor.id, booked: false, user_id: nil).sample
+    booking = Booking.where(doctor_id: doctor.id, user_id: nil).sample
     booking.user_id = user.id
-    booking.booked = true
     booking.save
   end
 end
@@ -90,17 +89,14 @@ u = User.first
 d = Doctor.first
 booking = Atend.where(date: Time.now - 10.day)[0].bookings.where(doctor_id: d.id)[0]
 booking.user_id = u.id
-booking.booked = true
 booking.save
 
 booking = Atend.where(date: Time.now - 8.day)[0].bookings.where(doctor_id: d.id)[0]
 booking.user_id = u.id
-booking.booked = true
 booking.save
 
 booking = Atend.where(date: Time.now - 3.day)[0].bookings.where(doctor_id: d.id)[0]
 booking.user_id = u.id
-booking.booked = true
 booking.save
 
 
