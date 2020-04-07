@@ -1,13 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::AtendController, type: :controller do
-  describe 'Accessing without log in' do
-    it 'redirects to login when index request' do
-      get :index
-      expect(response).to redirect_to new_user_session_path
-    end
-  end
-
   describe 'Accessing logged in' do
     before(:example) do
       user = FactoryBot.create(:user)
@@ -18,12 +11,11 @@ RSpec.describe Api::V1::AtendController, type: :controller do
       respond_to be_success
     end
 
-    it 'shows all future the Atends' do
+    it 'shows all future Atends' do
       FactoryBot.create(:atend, :day_after_tomorrow)
       get :index
       respond_to be_success
       parsed_body = JSON.parse(response.body)
-      puts parsed_body
       expect(parsed_body['atends'].length).to be(1)
     end
 
@@ -32,8 +24,14 @@ RSpec.describe Api::V1::AtendController, type: :controller do
       get :index
       respond_to be_success
       parsed_body = JSON.parse(response.body)
-      puts parsed_body
       expect(parsed_body['atends'].length).to be(0)
+    end
+  end
+
+  describe 'Accessing without log in' do
+    it 'redirects to login when index request' do
+      get :index
+      expect(response).to redirect_to new_user_session_path
     end
   end
 end

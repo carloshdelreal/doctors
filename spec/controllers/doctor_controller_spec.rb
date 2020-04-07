@@ -1,23 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::DoctorController, type: :controller do
-  describe 'Accessing without log in' do
-    it 'redirects to login when index request' do
-      get :index
-      expect(response).to redirect_to new_user_session_path
-    end
-
-    it 'redirects to login when show request' do
-      get :show, params: { id: FactoryBot.create(:doctor).id }
-      expect(response).to redirect_to new_user_session_path
-    end
-
-    it 'redirects to login when search request' do
-      get :search, params: { searchstring: :mia }
-      expect(response).to redirect_to new_user_session_path
-    end
-  end
-
   describe 'Accessing logged in' do
     it 'responds successfully to index request' do
       user = FactoryBot.create(:user)
@@ -96,6 +79,23 @@ RSpec.describe Api::V1::DoctorController, type: :controller do
       parsed_body = JSON.parse(response.body)
       expect(parsed_body.length).to be(7)
       expect(response.body).to have_content(loc)
+    end
+  end
+
+  describe 'Accessing without log in' do
+    it 'redirects to login when index request' do
+      get :index
+      expect(response).to redirect_to new_user_session_path
+    end
+
+    it 'redirects to login when show request' do
+      get :show, params: { id: FactoryBot.create(:doctor).id }
+      expect(response).to redirect_to new_user_session_path
+    end
+
+    it 'redirects to login when search request' do
+      get :search, params: { searchstring: :mia }
+      expect(response).to redirect_to new_user_session_path
     end
   end
 end

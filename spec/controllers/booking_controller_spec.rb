@@ -1,14 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::BookingController, type: :controller do
-  describe 'Accessing without log in' do
-    it 'redirects to login when index request' do
-      doctor = FactoryBot.create(:doctor)
-      get :index, params: { doctor_id: doctor.id }
-      expect(response).to redirect_to new_user_session_path
-    end
-  end
-
   describe 'Accessing logged in' do
     before(:example) do
       user = FactoryBot.create(:user)
@@ -58,6 +50,14 @@ RSpec.describe Api::V1::BookingController, type: :controller do
       )
       put :update, params: { id: booking2.id }
       expect(response.body).to have_content('{"success":false}')
+    end
+  end
+
+  describe 'Accessing without log in' do
+    it 'redirects to login when index request' do
+      doctor = FactoryBot.create(:doctor)
+      get :index, params: { doctor_id: doctor.id }
+      expect(response).to redirect_to new_user_session_path
     end
   end
 end
