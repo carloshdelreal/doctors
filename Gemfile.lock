@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 8062374a6d9a15f609c0e2598af931c6245c4ca7
+  revision: 7c3956fc3e6441d3b043f4b4a06fb4f6ebcbfc5f
   branch: master
   specs:
     faker (2.11.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-core.git
-  revision: dd3b2abe63b0dbd4c5c4131275a858d63cddab0e
+  revision: db99bec6afe7ed70ac5c38e78f9a03df9623b815
   branch: master
   specs:
     rspec-core (3.10.0.pre)
@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-expectations.git
-  revision: 9f224eaeb5c6d7eaaab0f7f6e355efd9329328f8
+  revision: fb97fc0005468ed9cd3284f01a1e6e8cf9a75917
   branch: master
   specs:
     rspec-expectations (3.10.0.pre)
@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-mocks.git
-  revision: 81c17e89b2722cb225d602e08b600e4a4f6148a4
+  revision: 685ad3b67a79e662261c73d3e80746b6497cd6f2
   branch: master
   specs:
     rspec-mocks (3.10.0.pre)
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-rails.git
-  revision: b2e51f96e659535c435eec25408f89c316aacb76
+  revision: ce8520e375c165de0d3110f23ee4cd739b423a08
   branch: master
   specs:
     rspec-rails (4.1.0.pre)
@@ -48,7 +48,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-support.git
-  revision: 63c03e5e6f0ac858398933f820d37087f57c315a
+  revision: 8ba857ee9e74be8898e5089871115e52dac36c32
   branch: master
   specs:
     rspec-support (3.10.0.pre)
@@ -120,7 +120,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.1)
-    capybara (3.32.0)
+    capybara (3.32.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -160,7 +160,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.4.0)
+    loofah (2.5.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -198,10 +198,10 @@ GEM
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
     parallel (1.19.1)
-    parser (2.7.0.5)
+    parser (2.7.1.0)
       ast (~> 2.4.0)
     pg (1.2.3)
-    public_suffix (4.0.3)
+    public_suffix (4.0.4)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -249,14 +249,14 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.4)
-    rubocop (0.80.1)
+    rubocop (0.81.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
       rainbow (>= 2.2.2, < 4.0)
       rexml
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 1.7)
+      unicode-display_width (>= 1.4.0, < 2.0)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
@@ -290,9 +290,9 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    unicode-display_width (1.6.1)
+    unicode-display_width (1.7.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (4.0.1)
