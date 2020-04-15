@@ -17,8 +17,7 @@ RSpec.describe Api::V1::User::BookingController, type: :controller do
         :booking,
         :tomorrow,
         user_id: user.id,
-        doctor_id: doctor.id,
-        booked: true
+        doctor_id: doctor.id
       )
       get :index
       respond_to be_success
@@ -41,8 +40,7 @@ RSpec.describe Api::V1::User::BookingController, type: :controller do
         :booking,
         :tomorrow,
         user_id: user.id,
-        doctor_id: doctor.id,
-        booked: true
+        doctor_id: doctor.id
       )
       get :upcoming
       respond_to be_success
