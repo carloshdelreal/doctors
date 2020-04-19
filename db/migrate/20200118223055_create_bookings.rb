@@ -4,7 +4,6 @@ class CreateBookings < ActiveRecord::Migration[6.0]
       t.string :label
       t.integer :hour
       t.integer :minutes
-      t.boolean :booked
       t.references :doctor, null: false, foreign_key: true
       t.references :atend, null: false, foreign_key: true
 

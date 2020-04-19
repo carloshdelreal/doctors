@@ -20,16 +20,20 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :user, only: [:show] 
-      resources :user, only: [:index] do
+      resources :user, only: [:index]
+      namespace :user do
         resources :booking, only: [:index]
+        get 'upcoming', to: 'booking#upcoming'
       end
+      resources :booking, only: [:update]
       resources :specialization, only: [:show, :index]
       resources :atend, only: [:index]
+      get '/doctor/search/:searchstring', to: 'doctor#search'
       resources :doctor, only: [:show, :index] do
-        resources :appointment, only: [:index, :show]
-        resources :booking, only: [:index, :update]
+        resources :booking, only: [:index]
       end
     end
   end
+
+  get '*path', to: redirect('/')
 end

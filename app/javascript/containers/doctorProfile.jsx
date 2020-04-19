@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -85,7 +86,14 @@ const Feedback = () => (
 class DoctorProfile extends React.Component {
   constructor() {
     super();
+    this.state = {};
     this.searchAgain = this.searchAgain.bind(this);
+  }
+
+  async componentDidMount() {
+    const { match } = this.props;
+    const docInfo = await axios.get(`/api/v1/doctor/${match.params.id}`);
+    this.setState(docInfo.data);
   }
 
   searchAgain() {
@@ -94,11 +102,18 @@ class DoctorProfile extends React.Component {
   }
 
   render() {
-    const { match } = this.props;
+    const { match, specialtyDict } = this.props;
+    const {
+      fullname,
+      // eslint-disable-next-line camelcase
+      specialization_id,
+      experience,
+      price,
+    } = this.state;
     return (
       <div>
         <div className="doctorProfile container">
-          <div className="doctorProfile__nav row justify-content-between">
+          <nav className="doctorProfile__nav row justify-content-between">
             <div className="col-6 text-left">
               <Link to="/doctor" onClick={() => this.searchAgain}>
                 <img src={BackCaretWhite} alt="back caret" />
@@ -112,11 +127,11 @@ class DoctorProfile extends React.Component {
                 bangalore
               </div>
             </div>
-          </div>
+          </nav>
 
-          <div className="doctorProfile__heading row justify-content-center">
+          <header className="doctorProfile__heading row justify-content-center">
             <div className="col-12 text-center">
-              <h3>Dr Hans Landa</h3>
+              <h3>{`Dr. ${fullname}`}</h3>
             </div>
             <div className="col-10 text-center">
               <div className="doctorProfile__heading--call d-inline-block">
@@ -130,22 +145,22 @@ class DoctorProfile extends React.Component {
               </div>
             </div>
             <div className="col-12 text-center">
-              <p>Orthopedy</p>
+              <p className="text-capitalize">{specialtyDict[specialization_id]}</p>
             </div>
-          </div>
+          </header>
 
-          <div className="container doctorProfile__heading--exp doctor__price_exp_likes py-1">
+          <section className="container doctorProfile__heading--exp doctor__price_exp_likes py-1">
             <div className="row justify-content-center">
               <div className="col-8">
                 <div className="row">
                   <div className="text-left p-0 col-3">
                     <p>
-                      $150
+                      { `$${price}` }
                     </p>
                   </div>
                   <div className="text-center p-0 col-6">
                     <p>
-                      12 yrs of exp
+                      { `${experience} yrs of exp` }
                     </p>
                   </div>
                   <div className="doctor__price_exp_likes--likes text-right p-0 col-3">
@@ -157,36 +172,36 @@ class DoctorProfile extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         </div>
-        <div className="container">
+        <nav className="container">
           <div className="doctorProfile__navInfo row">
-            <div className="col-4">
+            <div className="col-4 text-center">
               <NavLink to={match.url} activeStyle={{ color: 'red' }}>
                 Doctor&apos;s Info
               </NavLink>
             </div>
-            <div className="col-4">
+            <div className="col-4 text-center">
               <NavLink to={`${match.url}/email`} activeStyle={{ color: 'red' }}>
                 Clinic&apos;s Info
               </NavLink>
             </div>
-            <div className="col-4">
+            <div className="col-4 text-center">
               <NavLink to={`${match.url}/address`} activeStyle={{ color: 'red' }}>
                 Feedback
               </NavLink>
             </div>
           </div>
-        </div>
-        <div className="container">
+        </nav>
+        <main className="container">
           <Route exact path={match.url} component={DoctorInfo} />
           <Route path={`${match.url}/email`} component={ClinicInfo} />
           <Route path={`${match.url}/address`} component={Feedback} />
-        </div>
+        </main>
         <div className="container">
           <div className="doctorProfile__bookAppointment row justify-content-center">
             <div className="col-10">
-              <Link to={`/book/${match.params.id}`}>
+              <Link to={`/doctor/${match.params.id}/book`}>
                 <button className="btn btn-block doctorProfile__bookButton" type="button">Book Appointment</button>
               </Link>
             </div>
@@ -197,7 +212,10 @@ class DoctorProfile extends React.Component {
   }
 }
 
-const mapStateToProps = () => ({
+// eslint-disable-next-line arrow-parens
+const mapStateToProps = state => ({
+  specialties: state.specialties,
+  specialtyDict: state.specialtyDict,
 });
 
 // eslint-disable-next-line arrow-parens
@@ -213,6 +231,7 @@ DoctorProfile.propTypes = {
     }),
   }).isRequired,
   toggleOffSpecialty: PropTypes.instanceOf(Function).isRequired,
+  specialtyDict: PropTypes.shape({}).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DoctorProfile);

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -9,6 +7,9 @@ class User < ApplicationRecord
 
   has_many :appointments, dependent: :destroy
   has_many :physicians, through: :appointments, source: 'doctor'
+
+  # Validatiosn
+  validates :email, :encrypted_password, presence: true
 
   # Facebook Omniauth
   def self.new_with_session(params, session)

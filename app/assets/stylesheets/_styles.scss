@@ -10,8 +10,11 @@ body{
   color: $red-heart;
 }
 .doctorsList{
+  position: relative;
   &__results{
     color: $green-text;
+    font-size: x-small;
+    margin: 0;
   }
 }
 

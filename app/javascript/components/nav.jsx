@@ -28,7 +28,7 @@ class NavComponent extends Component {
     }
 
     return (
-      <div className="nav-component d-flex justify-content-space-between">
+      <nav className="nav-component d-flex justify-content-space-between">
         <div className="item d-flex text-left">
           <button className="nav-component__button" type="button">
             <Link to="/" onClick={this.unselectSpecialty}>
@@ -37,7 +37,7 @@ class NavComponent extends Component {
           </button>
           <button className="nav-component__button" type="button" onClick={this.unselectSpecialty}>{ buttonText }</button>
         </div>
-      </div>
+      </nav>
     );
   }
 }

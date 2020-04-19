@@ -27,7 +27,9 @@ class CarrouselSelector extends React.Component {
 
     return (
       <div className="carrouselSelector">
-        { list ? (<h5>Select a Time</h5>) : (<h5>The agenda is full </h5>) }
+        { list.length > 0
+          ? (<h5>Select a Time</h5>)
+          : (<h5>The Doctor has not agenda for this day</h5>) }
         <div className="container">
           <div className="row carrouselSelector__row" style={styles}>
             <div className="col-3" />

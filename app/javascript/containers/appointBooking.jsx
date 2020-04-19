@@ -1,11 +1,16 @@
 import axios from 'axios';
 import Calendar from 'react-calendar';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BackCaretWhite from '../images/backCaretWhite.png';
-import CarrouselSelector from './carrousel';
-import ModalComponent from './modal';
+import CarrouselSelector from '../components/carrousel';
+import ModalComponent from '../components/modal';
+import DoctorBookingCard from '../components/doctorBookingCard';
+import sortBookingByDatetime from '../scripts/sorting';
+import { loadUserBookings } from '../actions/index';
+
 
 class BookAppointment extends Component {
   constructor(props) {
@@ -80,11 +85,29 @@ class BookAppointment extends Component {
   }
 
   async bookAppointment() {
-    const { match } = this.props;
     const { atend_id: atendId } = this.state;
-    axios.patch(`/api/v1/doctor/${match.params.id}/booking/${atendId}`, {
+    const { loadUserBookings } = this.props;
+
+    axios.patch(`/api/v1/booking/${atendId}`, {
       booking: { booking: true },
     });
+
+
+    const res = await axios.get('/api/v1/user/booking');
+    const booking = sortBookingByDatetime(res.data.booking);
+    // eslint-disable-next-line arrow-parens
+    booking.forEach(item => {
+      // eslint-disable-next-line no-param-reassign
+      item.datetimeObject = new Date(
+        item.datetime.slice(0, 4),
+        parseInt(item.datetime.slice(5, 7), 10) - 1,
+        item.datetime.slice(8, 10),
+        item.datetime.slice(11, 13),
+        item.datetime.slice(14, 16),
+        0,
+      );
+    });
+    loadUserBookings(booking);
   }
 
   render() {
@@ -95,6 +118,7 @@ class BookAppointment extends Component {
       selected,
       show,
     } = this.state;
+    const { match } = this.props;
 
     if (booking === null) {
       return (<div>Loading</div>);
@@ -112,7 +136,7 @@ class BookAppointment extends Component {
           handleAccept={this.handleAccept}
         />
         <div className="bookAppointment__header container">
-          <div className="doctorProfile__nav row">
+          <nav className="doctorProfile__nav row">
             <div className="col-2 text-left">
               <Link to="/">
                 <img src={BackCaretWhite} alt="back caret" />
@@ -123,7 +147,7 @@ class BookAppointment extends Component {
                 Make Booking
               </div>
             </div>
-          </div>
+          </nav>
           <Calendar
             onChange={this.calendarChange}
             minDate={minBookinDate}
@@ -137,7 +161,7 @@ class BookAppointment extends Component {
           />
 
         </div>
-        <div className="container">
+        <main className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-sm-8 col-md-6">
               <div className="row">
@@ -153,43 +177,14 @@ class BookAppointment extends Component {
                 </div>
               </div>
               <div className="bookAppointment__time pb-3">
-                { time ? `Apointment for ${date.getDate()} of ${month}, ${date.getFullYear()} at ${time.getHours()}:${time.getMinutes()}` : "Select an Appointment's date and Time"}
+                { time
+                  ? `Appointment for ${date.getDate()} of ${month}, ${date.getFullYear()} at ${time.getHours()}:${time.getMinutes()}`
+                  : "Select an Appointment's date and Time"}
               </div>
-              <div className="doctorCard row justify-content-center">
-                <div className="col-12 text-center">
-                  <h3>Dr Hans Landa</h3>
-                </div>
-                <div className="col-12 text-center">
-                  <p>Orthopedy</p>
-                </div>
-                <div className="container py-1">
-                  <div className="row justify-content-center">
-                    <div className="col-8">
-                      <div className="row">
-                        <div className="text-left p-0 col-3">
-                          <p>
-                            $150
-                          </p>
-                        </div>
-                        <div className="text-center p-0 col-6">
-                          <p>
-                            12 yrs of exp
-                          </p>
-                        </div>
-                        <div className="doctor__price_exp_likes--likes text-right p-0 col-3">
-                          <p>
-                            <span>&hearts;</span>
-                            123
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <DoctorBookingCard id={match.params.id} />
             </div>
           </div>
-        </div>
+        </main>
       </div>
     );
   }
@@ -203,4 +198,12 @@ BookAppointment.propTypes = {
   }).isRequired,
 };
 
-export default BookAppointment;
+const mapDispatchToProps = dispatch => ({
+  loadUserBookings: bookings => dispatch(loadUserBookings(bookings)),
+});
+
+BookAppointment.propTypes = {
+  loadUserBookings: PropTypes.instanceOf(Function).isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(BookAppointment);

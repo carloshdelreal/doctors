@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Api::V1::AtendController < ApplicationController
   before_action :set_atends, only: %i[index]
 
