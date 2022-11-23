@@ -10,7 +10,7 @@ This is a Doctor's Appointment application that is intended to show some of the 
 In this project we used:
 * Ruby
 * Ruby on Rails Framework
-* HTML
+* [HTML](https://www.scaler.com/topics/html/)
 * CSS
 * React
 * Redux
